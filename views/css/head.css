@@ -1,0 +1,11 @@
+.head{width: auto;margin: 0 auto;padding: 0 20px;background: #343131;}
+.logo{float: left;}
+.logo img{display: block;margin-top: 25px;border-radius: 30px;}
+#nav{float: right;}
+ul{list-style: none;}
+#nav a{font-size: 1.4em;color: #fff;text-shadow:0px -1px 0px #000;display: block;}
+#nav a:hover{color: #358cce;}
+#nav li{float: left;line-height: 90px;margin-left: 30px;}
+.cf:before,.cf:after{content: "";display: table;}
+.cf:after{clear: both;}
+.cf{zoom:1;}

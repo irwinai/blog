@@ -1,0 +1,35 @@
+<html>
+<head>
+    <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../js/blur.js"></script>
+    <script type="text/javascript">
+        var img = new Image();
+        img.onload = function(){
+            var canvas = $('#blur').get(0);
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0);
+            varBlur(ctx, function(x, y){
+                var z = Math.sqrt(canvas.height) ;
+                return z || 1;
+            });
+        }
+        img.src = "../images/a.jpg";
+    </script>
+    <style type="text/css">
+#blur{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -2;
+    min-width: 100%;
+    min-height: 100%;
+}
+    </style>
+    <title></title>
+</head>
+<body>
+    <canvas id="blur" width="500" height="333"></canvas>
+
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../css/head.css">
+    <link rel="stylesheet" type="text/css" href="../css/blog.css">
+    <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../js/blur.js"></script>
+    <script type="text/javascript">
+        var img = new Image();
+        img.onload = function(){
+            var canvas = $('#blur').get(0);
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0);
+            varBlur(ctx, function(x, y){
+                var z = Math.sqrt(canvas.height) ;
+                return z || 1;
+            });
+        }
+        img.src = "../images/a.jpg";
+    </script>
+    <title>blog home page</title>
+</head>
+<body>
+    <!-- <div class="blur"></div> -->
+    <canvas id="blur" width="500" height="333"></canvas>
+    <!-- header开始 -->
+     <div class="head cf">
+        <div class="logo">
+            <img src="../images/photo.jpg" />
+        </div>
+        <div id="nav">
+            <ul>
+                <li><a href="#">文章</a></li>
+                <li><a href="#">分类</a></li>
+                <li><a href="#">标签</a></li>
+                <li><a href="#">关于</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- header 结束 -->
+
+    <!-- 主内容 -->
+    <div class="blog-content cf">
+        <div class="sider-bar">
+            <div class="user-box">
+                <a href="#" class="pic"><img class="pic" src="../images/photo.jpg" /></a>
+                <label class="name">by <a  href="#">irwin</a></label>
+                <p class="info">java开发攻城狮</p>
+                <p class="time">发表于 2014 下午 5:30</p>
+            </div>
+            
+        </div>
+        <div class="main-content">
+            <h1 class="title"><a href="#">osx下go安装环境安装配置</a></h1>
+            <ul class="tags cf">
+                <li><a href="#">osx</a></li>
+                <li><a href="#">go</a></li>
+                <li><a href="#">环境配置</a></li>
+                <li><a href="#">java</a></li>
+            </ul>
+            <div class="content">这是文章的内容哦亲</div>
+        </div>
+        <div class="comments">
+            <h2 class="comments-header">评论</h2>
+            <ul class="comments-list">
+                <li class="cf">
+                    <div class="comment-wrap cf">
+                        <div class="pic-wrap"><img class="pic" src="../images/photo.jpg" /></div>
+                        <a class="comment-user" href="#">何江英同学:</a>
+                        <div class="comment">这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎</div>
+                    </div>
+                </li>
+                 <li class="cf">
+                    <div class="comment-wrap cf">
+                        <div class="pic-wrap"><img class="pic" src="../images/photo.jpg" /></div>
+                        <a class="comment-user" href="#">何江英同学:</a>
+                        <div class="comment">这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎</div>
+                    </div>
+                </li>
+                 <li class="cf">
+                    <div class="comment-wrap cf">
+                        <div class="pic-wrap"><img class="pic" src="../images/photo.jpg" /></div>
+                        <a class="comment-user" href="#">何江英同学:</a>
+                        <div class="comment">这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎</div>
+                    </div>
+                </li>
+            </ul>
+            <div class="comment-add">
+                <h2>添加评论</h2>
+                <form>
+                    <textarea cols="40" rows="5">
+                    </textarea>
+                    <input type="submit" class="submit" value="提交评论"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
