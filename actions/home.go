@@ -23,7 +23,7 @@ func (c *HomeAction) Login() error {
 				session := c.Session()
 				session.Set(USER_ID, c.User.Id)
 				session.Set(USERNAME, c.User.Username)
-				return c.Render("blog.html")
+				return c.Go("list", &BlogAction{})
 			}
 			return c.Go("login?message=账号或密码错误")
 		}

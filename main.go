@@ -45,5 +45,6 @@ func main() {
 
 	// add actions
 	xweb.AddAction(&HomeAction{})
+	xweb.AutoAction(&BlogAction{})
 	xweb.Run(fmt.Sprintf("%v:%v", cfgs["address"], cfgs["port"]))
 }
