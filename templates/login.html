@@ -50,14 +50,11 @@
         	$("#submit").click(function(){
         		login();
         	});
-        	$("input").keyup(function(e){
-        		var id = $(this).attr("id");
-        		if(id == "username" || id == "password" || id== "remember"){
-        			var e = window.event || e;
-	        		if(e.keyCode == 13){
-	        			$(this).blur();
-	        			login();
-	        		}
+        	$("#password").keyup(function(e){
+    			var e = window.event || e;
+        		if(e.keyCode == 13){
+        			$("#username").focus();
+        			login();
         		}
         	});
         });
