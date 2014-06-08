@@ -11,6 +11,7 @@ import (
 )
 
 func main() {
+
 	//读取配置文件，创建数据库连接
 	var err error
 	cfg, err := config.Load("config.ini")

@@ -20,6 +20,8 @@ body {
   margin: 0;
   font-size: 10px;
   line-height: normal;
+  font-family: "Helvetica Neue",sans-serif,"Microsoft Yahei","SimHei";
+  -webkit-font-smoothing: antialiased;
 }
 
 /* HTML5 display definitions

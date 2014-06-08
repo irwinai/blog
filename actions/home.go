@@ -1,6 +1,10 @@
 package actions
 
-import "github.com/lunny/xweb"
+import (
+	"encoding/json"
+
+	"github.com/lunny/xweb"
+)
 
 type HomeAction struct {
 	BaseAction
@@ -10,24 +14,34 @@ type HomeAction struct {
 	User User
 }
 
-func (c *HomeAction) Login() error {
+func (c *HomeAction) Login() {
 	if c.Method() == "GET" {
-		return c.Render("login.html")
+		c.Render("login.html")
 	} else if c.Method() == "POST" {
-		if len(c.User.Username) <= 0 {
-			return c.Go("login?message=登录名不能为空")
-		}
-		has, err := c.Orm.Get(&c.User)
-		if err == nil {
-			if has {
-				session := c.Session()
-				session.Set(USER_ID, c.User.Id)
-				session.Set(USERNAME, c.User.Username)
-				return c.Go("list", &BlogAction{})
+		user := c.GetString("user")
+		json.Unmarshal([]byte(user), &c.User)
+		m := make(map[string]string)
+		if len(c.User.Username) <= 0 || len(c.User.Password) <= 0 {
+			m[AJAX_STATUS] = "0"
+			m[AJAX_MESSAGE] = "用户名或密码不能为空"
+		} else {
+			has, err := c.Orm.Get(&c.User)
+			if err == nil {
+				if has {
+					session := c.Session()
+					session.Set(USER_ID, c.User.Id)
+					session.Set(USERNAME, c.User.Username)
+					m[AJAX_STATUS] = "1"
+					m[AJAX_MESSAGE] = "登入成功"
+				} else {
+					m[AJAX_STATUS] = "0"
+					m[AJAX_MESSAGE] = "用户名或密码错误"
+				}
+			} else {
+				m[AJAX_STATUS] = "0"
+				m[AJAX_MESSAGE] = "服务器异常，请稍候重试"
 			}
-			return c.Go("login?message=账号或密码错误")
 		}
-		return err
+		c.ServeJson(m)
 	}
-	return xweb.NotSupported()
 }
