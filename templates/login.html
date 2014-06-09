@@ -53,7 +53,6 @@
         	$("#password").keyup(function(e){
     			var e = window.event || e;
         		if(e.keyCode == 13){
-        			$("#username").focus();
         			login();
         		}
         	});
@@ -79,7 +78,7 @@
         			data:{"user":JSON.stringify(user)},
         			success: function(data){
         				if(data.status == 0){
-        					alert(data.msg);
+        					shake();
         					$(".login-load").hide();
         					$(".login-btn").show();
         				}else{
@@ -96,10 +95,15 @@
         	var name = $.trim($("#username").val());
         	var password = $.trim($("#password").val());
         	if(name == "" || password == ""){
-        		alert("用户名或密码不能为空");
+        		shake();
         		return false;
         	}
         	return true;
+        }
+
+        function shake(){
+        	$(".login-wrapper").addClass("animated shake");
+        	setTimeout('$(".login-wrapper").removeClass("animated shake");','1000')
         }
     </script>
 </body>
