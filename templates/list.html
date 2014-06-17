@@ -7,30 +7,35 @@
 	<link rel="shortcut icon" href="../images/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
 	<style type="text/css">
-		body{padding-top: 70px;}
+		body{padding-top: 10px;}
+    #blur{
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -2;
+        min-width: 100%;
+        min-height: 100%;
+        opacity: 0.7;
+    }
 	</style>
+   <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../js/blur.js"></script>
+    <script type="text/javascript">
+        var img = new Image();
+        img.onload = function(){
+            var canvas = $('#blur').get(0);
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0);
+            varBlur(ctx, function(x, y){
+                var z = Math.sqrt(canvas.height) ;
+                return z || 1;
+            });
+        }
+        img.src = "../images/a.jpg";
+    </script>
 </head>
 <body>
-	<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Project name</a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div><!-- /.nav-collapse -->
-      </div><!-- /.container -->
-    </div>
+    <canvas id="blur" width="500" height="333"></canvas>
     <div class="container">
 
       <div class="row row-offcanvas row-offcanvas-right">
