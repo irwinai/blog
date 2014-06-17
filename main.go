@@ -3,7 +3,8 @@ package main
 import (
 	"fmt"
 
-	. "./blog/actions"
+	. "blog/actions"
+
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/lunny/config"
 	"github.com/lunny/xorm"
@@ -24,7 +25,7 @@ func main() {
 
 	// create Orm
 	var orm *xorm.Engine
-	orm, err = xorm.NewEngine("mysql", fmt.Sprintf("%v:%v@%v/%v?charset=utf8",
+	orm, err = xorm.NewEngine("mysql", fmt.Sprintf("%v:%v@tcp(%v)/%v?charset=utf8",
 		cfgs["dbuser"], cfgs["dbpasswd"], cfgs["dbhost"], cfgs["dbname"]))
 	if err != nil {
 		fmt.Println(err)
