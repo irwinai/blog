@@ -7,48 +7,22 @@
 	<link rel="shortcut icon" href="../images/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
 	<style type="text/css">
-		body{padding-top: 10px;}
-    #blur{
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: -2;
-        min-width: 100%;
-        min-height: 100%;
-        opacity: 0.7;
-    }
+		body{padding-top: 10px;background: #e6e6e6 url(../images/bg.png) repeat 0 0}
     .content-wrapper{
-        opacity: 0.7;
-        background: #fff;
+        padding: 30px 20px;
+        background-color: #fff;
+        box-shadow: 0 0 5px 0 rgba(0,0,0,.15);
     }
     .content-wrapper .content-head{
-        text-align: center;
-        padding-top: 20px;
     }
     .content-wrapper .content{
 
     }
 	</style>
    <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="../js/blur.js"></script>
-    <script type="text/javascript">
-        var img = new Image();
-        img.onload = function(){
-            var canvas = $('#blur').get(0);
-            var ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0);
-            varBlur(ctx, function(x, y){
-                var z = Math.sqrt(canvas.height) ;
-                return z || 1;
-            });
-        }
-        img.src = "../images/2.jpg";
-    </script>
 </head>
 <body>
-    <canvas id="blur" width="688" height="461"></canvas>
     <div class="container">
-
       <div class="row">
         <div class="col-xs-6 col-md-3" id="sidebar" role="navigation">
           <div class="list-group">
@@ -64,8 +38,10 @@
             <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
           </p>
           <div class="content-wrapper">
-            <h1 class="content-head">go语言编程基础</h1>
-            <div class="text-center info">fdffd</div>
+            <div class="content-head">go语言编程基础</div>
+            <div class="text-center info">
+
+            </div>
             <div class="content">This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</div>
           </div>
         </div><!--/span-->

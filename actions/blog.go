@@ -9,5 +9,5 @@ type BlogAction struct {
 }
 
 func (c *BlogAction) List() error {
-	return c.Render("list.html")
+	return c.Render("list_janey.html")
 }
