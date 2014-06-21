@@ -5,12 +5,6 @@
 	<meta charset="UTF-8" />
 	<link rel="shortcut icon" href="../images/favicon.ico">
 	<style type="text/css">
-	#footer{
-		padding: 20px 0 20px 0;
-		margin-top: 30px;
-		border-top: solid 1px rgba(0,0,0,0.05);
-		text-align: center;
-	}
 	.blog-list .blog-item {
 		font-size: 12px;
 	}
@@ -110,8 +104,8 @@
 				<div class="blog-list">
 					<div class="blog-item">
 						<div class="blog-head clearfix">
-							<img src="../images/me.png">
-							<h2 title="我是标题，我显眼"><a href="#">我是标题，我显眼</a></h2>
+							<a href="" alt="irving"><img src="../images/me.png"></a>
+							<h2 title="我是标题，我显眼"><a href="detail">我是标题，我显眼</a></h2>
 							<div class="blog-time">2014-06-21</div>
 							<div class="blog-actions">
 								<label><i class="iconfont">&#xe601;</i>  0</label>
@@ -127,7 +121,7 @@
 					<div class="blog-item">
 						<div class="blog-head">
 							<div class="clearfix">
-								<img src="../images/me.png">
+								<a href="" alt="irving"><img src="../images/me.png"></a>
 								<h2 title="我是标题，我显眼"><a href="#">我是标题，我显眼</a></h2>
 								<div class="blog-time">2014-06-21</div>
 								<div class="blog-actions">
@@ -157,5 +151,10 @@
 			</div>
 		</div>
 	{{include "footer.html"}}
+	<script type="text/javascript">
+		$(function(){
+			getFocus($(".nav-list .li-art"),true);
+		});
+	</script>
 </body>
 </html>

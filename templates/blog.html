@@ -1,100 +1,268 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="../css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="../css/head.css">
-    <link rel="stylesheet" type="text/css" href="../css/blog.css">
-    <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="../js/blur.js"></script>
-    <script type="text/javascript">
-        var img = new Image();
-        img.onload = function(){
-            var canvas = $('#blur').get(0);
-            var ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0);
-            varBlur(ctx, function(x, y){
-                var z = Math.sqrt(canvas.height) ;
-                return z || 1;
-            });
-        }
-        img.src = "../images/a.jpg";
-    </script>
-    <title>blog home page</title>
+	<title></title>
+	<meta charset="UTF-8" />
+	<link rel="shortcut icon" href="../images/favicon.ico">
+	<style type="text/css">
+	.blog-list .blog-item {
+		font-size: 12px;
+	}
+	.blog-list .blog-head{
+		height: 60px;
+		border-bottom: 1px solid #f8f8f8;
+		padding: 10px;
+		background: #fff;
+	}
+	.blog-list .blog-head img {
+		width: 45px;
+		height: 45px;
+		float: left;
+	}
+	.blog-list .blog-head h2 {
+		float: left;
+		font-weight: normal;
+		line-height: 45px;
+		margin: 0;
+		margin-left: 10px;
+		font-size: 18px;
+		max-width: 480px;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+	.blog-list .blog-head h2 a{
+		color: rgba(0,0,0,0.66);
+		text-decoration: none;
+	}
+	.blog-list .blog-head h2 a:hover{
+		color: rgba(0,0,0,0.88);
+	}
+	.blog-list .blog-head .blog-time {
+		float: left;
+		line-height: 45px;
+		font-size: 13px;
+		color: rgba(0,0,0,0.44);
+		margin-left: 10px;
+	}
+	.blog-list .blog-actions {
+		float: right;
+		line-height: 45px;
+	}
+	.blog-list .blog-actions label {
+		font-weight: normal;
+		color: rgba(0,0,0,0.44);
+		margin-left: 10px;
+		cursor: pointer;
+	}
+	.blog-list .blog-actions label:hover{
+		color: rgba(0,0,0,0.88);
+	}
+	.blog-list .blog-actions label:hover i {
+		color: rgba(0,0,0,0.88);
+	}
+	.blog-list .blog-bg {
+		padding-bottom: 80px;
+		min-height: 300px;
+		background: #fff;
+		background: rgba(255,255,255,0.9);
+		background: -webkit-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
+		background: -moz-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
+		background: -ms-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
+		background: -o-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
+		background: linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
+	}
+	.blog-list .blog-content{
+		font-size: 14px;
+		padding: 10px;
+		text-indent: 2em;
+	}
+	.blog-list .view-detail {
+		margin: 10px 0;
+	}
+	.blog-list .view-detail>a {
+		color: rgba(0,0,0,0.44);
+		cursor: pointer;
+		text-decoration: none;
+	}
+	.blog-list .view-detail>a:hover {
+		color: rgba(0,0,0,0.66);
+	}
+	.blog-list .blog-comment{
+		margin: 20px 0 0 30px;
+	}
+	.blog-list .blog-comment img{
+		width: 45px;
+	}
+	.blog-list .blog-comment .comment-des{
+		color: #666;
+		font-size: 15px;
+	}
+	.blog-list .blog-comment .comment-des a{
+		color: #666;
+	}
+	.blog-list .blog-comment .comment-des a:hover{
+		color: #ff5f3e !important;
+	}
+	.blog-list .blog-comment .comment-des a:hover i{
+		color: #ff5f3e !important;
+	}
+	.blog-list .blog-comment .comment-des .count{
+		color: rgba(255,0,0,0.88);
+		padding: 0 5px;
+		font-size: 22px;
+	}
+	.media-heading a{
+		color:#ff5f3e;
+		font-size: 14px;
+	}
+	.media-heading a:hover{
+		color: #ff5f3e !important;
+	}
+	.blog-list .blog-comment .add-comment{
+		margin: 40px 10px 0 0;
+		resize: none;
+	}
+	.add-comment .form-control:focus{
+		border-color: #ff5f3e;
+		-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(255, 0, 0, 0.6);
+		box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(255, 0, 0, 0.6);
+	}
+	.add-comment button{
+		margin-top: 10px;
+	}
+	</style>
 </head>
 <body>
-    <canvas id="blur" width="500" height="333"></canvas>
-    <!-- header开始 -->
-     <div class="head cf">
-        <div class="logo">
-            <img src="../images/photo.jpg" />
-        </div>
-        <div id="nav">
-            <ul>
-                <li><a href="#">文章</a></li>
-                <li><a href="#">分类</a></li>
-                <li><a href="#">标签</a></li>
-                <li><a href="#">关于</a></li>
-            </ul>
-        </div>
-    </div>
-    <!-- header 结束 -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				{{include "nav.html"}}
+			</div>
+			<div class="col-md-9">
+				<div class="blog-list">
+					<div class="blog-item">
+						<div class="blog-head clearfix">
+							<a href="" alt="irving"><img src="../images/me.png"></a>
+							<h2 title="我是标题，我显眼">我是标题，我显眼</h2>
+							<div class="blog-time">2014-06-21</div>
+							<div class="blog-actions">
+								<label><i class="iconfont">&#xe601;</i>  0</label>
+								<label><i class="iconfont">&#xe604;</i>  2/1023</label>
+							</div>
+						</div>
+						<div class="blog-bg">
+							<div class="blog-content">
+							交互设计师如何培养数据分析的能力呢？
+首先，要有数据收集分析的意识，掌握数据产生的来源；
 
-    <!-- 主内容 -->
-    <div class="blog-content cf">
-        <div class="sider-bar">
-            <div class="user-box">
-                <a href="#" class="pic"><img class="pic" src="../images/photo.jpg" /></a>
-                <label class="name">by <a  href="#">irwin</a></label>
-                <p class="info">java开发攻城狮</p>
-                <p class="time">发表于 2014 下午 5:30</p>
-            </div>
-            
-        </div>
-        <div class="main-content">
-            <h1 class="title"><a href="#">osx下go安装环境安装配置</a></h1>
-            <ul class="tags cf">
-                <li><a href="#">osx</a></li>
-                <li><a href="#">go</a></li>
-                <li><a href="#">环境配置</a></li>
-                <li><a href="#">java</a></li>
-            </ul>
-            <div class="content">这是文章的内容哦亲</div>
-        </div>
-        <div class="comments">
-            <h2 class="comments-header">评论</h2>
-            <ul class="comments-list">
-                <li class="cf">
-                    <div class="comment-wrap cf">
-                        <div class="pic-wrap"><img class="pic" src="../images/photo.jpg" /></div>
-                        <a class="comment-user" href="#">何江英同学:</a>
-                        <div class="comment">这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎</div>
-                    </div>
-                </li>
-                 <li class="cf">
-                    <div class="comment-wrap cf">
-                        <div class="pic-wrap"><img class="pic" src="../images/photo.jpg" /></div>
-                        <a class="comment-user" href="#">何江英同学:</a>
-                        <div class="comment">这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎</div>
-                    </div>
-                </li>
-                 <li class="cf">
-                    <div class="comment-wrap cf">
-                        <div class="pic-wrap"><img class="pic" src="../images/photo.jpg" /></div>
-                        <a class="comment-user" href="#">何江英同学:</a>
-                        <div class="comment">这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎这是一个很好的东西哦，收藏了。。。嘻嘻嘎嘎</div>
-                    </div>
-                </li>
-            </ul>
-            <div class="comment-add">
-                <h2>添加评论</h2>
-                <form>
-                    <textarea cols="40" rows="5">
-                    </textarea>
-                    <input type="submit" class="submit" value="提交评论"/>
-                </form>
-            </div>
-        </div>
-    </div>
+其次，拿到数据后，在数据间找关联性，深挖内在含义；
+
+再次，掌握基本的数据分析方法，并在实战中加以应用；
+
+最后，将分析的结果应用到后续工作中，检验分析结果。
+
+如此，循环往复，形成一种职业习惯，一个工作的流程。
+
+ 
+
+
+
+从平时的工作中，总结出以下几点数据分析时要注意的原则，在这里抛砖引玉，欢迎来拍：
+
+1、明确数据分析的目的
+
+要分析一份数据，首先得先明确自己的目的：为什么要收集并分析这样一份数据？只有你的目的明确了之后，才能对接下来你要收集哪些数据、如何收集有一个整体的把握。当然你的目的可以是多个小点，（如：用户在首页浏览了哪些内容？登录框在页面上的重要程度？）只要这些点是一个个切实待解决的问题点，将其罗列下来，一个一个的去收集数据。
+
+你分析的结果可能会改变整个项目，但有了数据的支撑，会让项目或需求有一个全新的开始或细节的调整。
+
+
+2、了解数据来源并收集
+
+按照分析的目标中罗列的点，建立一个分析框架，并按照轻重缓急进行数据收集。与此同时，需要对数据是如何产生的，如何获取这些数据进行相应的了解。在工作中应用到的数据统计工具有：金牌令箭、显微镜、CNZZ统计等，通过这些统计工具可以方便的进行数据的收集，同时交互设计师也要与前端保持沟通，了解数据统计的方法，适时添加统计的维度，请前端同学帮忙埋统计代码。
+
+
+
+3、掌握数据分析的方法
+
+作为交互设计师，要掌握几种基本的数据分析方法：对比分析法、分组分析法、结构分析法、平均分析法、交叉分析法……基于这些分析方法，我们可以对现状、原因、未来有初步的了解，并进入后续更深入的分析。如：现状分析适用于对现今站点或页面的浏览点击情况做一个数据统计与热点分析，可以得出用户的浏览路径及关注重点。原因分析则侧重于一个问题，深入挖掘答案。未来分析可用于与产品经理沟通时，对后期产品的规划进行数据交流。
+
+
+4、沟通分析结果
+
+在沟通分析结果前，要注意不要只用手上仅有的资讯作判断，如果手上的证据不足以完全反应实际状况的时候，以数据分析结果作为决策就很容易出错，尤其是单看某一个数据维度时。交互设计师要超前思考，考虑产品经理可能从中提出的问题，并给出回应。让沟通高效且有意义。
+
+
+
+5、骗人的分析结果
+
+
+数据是会骗人的。其中最有名的例子就是辛普森悖论。一所美国高校的两个学院，分别是法学院和商学院，开学时，人们以为有性别歧视。
+
+法学院：（女生录取率高）
+
+							</div>
+							<div class="blog-comment">
+								<div class="comment-des">
+									<span class="count">10</span>条评论
+									&nbsp;|&nbsp; 帐号登入: 
+									<a href="#">
+										<i class="iconfont">&#xe606;</i>
+										微博
+									</a>
+								</div>
+								<div class="comments">
+									<div class="media">
+									  <a class="pull-left" href="#">
+									    <img class="media-object" src="../images/me.png" alt="...">
+									  </a>
+									  <div class="media-body">
+									    <div class="media-heading"><a href="#">逗比</a>:</div>
+									    你这是作死的行为吗？
+									  </div>
+									</div>
+
+									<div class="media">
+									  <a class="pull-left" href="#">
+									    <img class="media-object" src="../images/me.png" alt="...">
+									  </a>
+									  <div class="media-body">
+									    <div class="media-heading"><a href="#">逗比</a>:</div>
+									    你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？
+									  </div>
+									</div>
+
+									<div class="media">
+									  <a class="pull-left" href="#">
+									    <img class="media-object" src="../images/me.png" alt="...">
+									  </a>
+									  <div class="media-body">
+									    <div class="media-heading"><a href="#">逗比</a>:</div>
+									    你这是作死的行为吗？
+									  </div>
+									</div>
+								</div>
+								<div class="add-comment">
+									<div class="media">
+									  	<a class="pull-left" href="#">
+									    	<img class="media-object" src="../images/me.png" alt="...">
+									  	</a>
+									  	<div class="media-body">
+									  		<textarea placeholder="说点什么吧..." class="form-control" rows="5"></textarea>
+									  		<button class="btn btn-default">发表评论</button>
+									  	</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{{include "footer.html"}}
+	<script type="text/javascript">
+		$(function(){
+			getFocus($(".nav-list .li-art"),true);
+		});
+	</script>
 </body>
 </html>
