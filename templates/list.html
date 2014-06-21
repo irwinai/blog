@@ -1,56 +1,161 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
 	<title></title>
-	<meta charset="utf-8">	
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8" />
 	<link rel="shortcut icon" href="../images/favicon.ico">
-	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
 	<style type="text/css">
-		body{padding-top: 10px;background: #e6e6e6 url(../images/bg.png) repeat 0 0}
-    .content-wrapper{
-        padding: 30px 20px;
-        background-color: #fff;
-        box-shadow: 0 0 5px 0 rgba(0,0,0,.15);
-    }
-    .content-wrapper .content-head{
-    }
-    .content-wrapper .content{
-
-    }
+	#footer{
+		padding: 20px 0 20px 0;
+		margin-top: 30px;
+		border-top: solid 1px rgba(0,0,0,0.05);
+		text-align: center;
+	}
+	.blog-list .blog-item {
+		font-size: 12px;
+	}
+	.blog-list .blog-head{
+		height: 60px;
+		border-bottom: 1px solid #f8f8f8;
+		padding: 10px;
+		background: #fff;
+	}
+	.blog-list .blog-head img {
+		width: 45px;
+		height: 45px;
+		float: left;
+	}
+	.blog-list .blog-head h2 {
+		float: left;
+		font-weight: normal;
+		line-height: 45px;
+		margin: 0;
+		margin-left: 10px;
+		font-size: 18px;
+		max-width: 480px;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+	.blog-list .blog-head h2 a{
+		color: rgba(0,0,0,0.66);
+		text-decoration: none;
+	}
+	.blog-list .blog-head h2 a:hover{
+		color: rgba(0,0,0,0.88);
+	}
+	.blog-list .blog-head .blog-time {
+		float: left;
+		line-height: 45px;
+		font-size: 13px;
+		color: rgba(0,0,0,0.44);
+		margin-left: 10px;
+	}
+	.blog-list .blog-actions {
+		float: right;
+		line-height: 45px;
+	}
+	.blog-list .blog-actions label {
+		font-weight: normal;
+		color: rgba(0,0,0,0.44);
+		margin-left: 10px;
+		cursor: pointer;
+	}
+	.blog-list .blog-actions label:hover{
+		color: rgba(0,0,0,0.88);
+	}
+	.blog-list .blog-actions label:hover i {
+		color: rgba(0,0,0,0.88);
+	}
+	.blog-list .blog-content {
+		min-height: 300px;
+		font-size: 14px;
+		padding: 10px;
+		text-indent: 2em;
+		background: #fff;
+		background: rgba(255,255,255,0.9);
+		background: -webkit-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
+		background: -moz-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
+		background: -ms-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
+		background: -o-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
+		background: linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
+	}
+	.blog-list .view-detail {
+		margin: 10px 0;
+	}
+	.blog-list .view-detail>a {
+		color: rgba(0,0,0,0.44);
+		cursor: pointer;
+		text-decoration: none;
+	}
+	.blog-list .view-detail>a:hover {
+		color: rgba(0,0,0,0.66);
+	}
+	#pagination{
+		margin-right: 20px;
+	}
+	#pagination a{
+		color: rgba(0,0,0,0.88);
+		padding: 7px 15px;
+	}
 	</style>
-   <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
 </head>
 <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-6 col-md-3" id="sidebar" role="navigation">
-          <div class="list-group">
-            <a href="#" class="list-group-item active">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-          </div>
-        </div>
-        <div class="col-xs-12 col-md-9">
-          <p class="pull-right visible-xs">
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-          </p>
-          <div class="content-wrapper">
-            <div class="content-head">go语言编程基础</div>
-            <div class="text-center info">
-
-            </div>
-            <div class="content">This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</div>
-          </div>
-        </div><!--/span-->
-      </div><!--/row-->
-      <hr>
-      <footer>
-        <p>© Jastate 2014</p>
-      </footer>
-
-    </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				{{include "nav.html"}}
+			</div>
+			<div class="col-md-9">
+				<div class="blog-list">
+					<div class="blog-item">
+						<div class="blog-head clearfix">
+							<img src="../images/me.png">
+							<h2 title="我是标题，我显眼"><a href="#">我是标题，我显眼</a></h2>
+							<div class="blog-time">2014-06-21</div>
+							<div class="blog-actions">
+								<label><i class="iconfont">&#xe601;</i>  0</label>
+								<label><i class="iconfont">&#xe604;</i>  2/1023</label>
+							</div>
+						</div>
+						<div class="blog-content">
+							移动互联网时代也全面到来，如何利用广告这一传统的主流盈利模式，让移动apps的巨大流量得以变现，产生更多的商业价值，越来越值得研究。我们《移动广告研究》课题组已对各类的移动应用做了拉网式研究。作为课题成员之一，对现在移动apps的主流广告模式做了梳理。
+							广告是个两极化的商品产品。广告主和媒体爱它，因为能赚钱，而且做得好能赚大钱；普通用户很烦它，希望它永远滚出自己的视线。所以做出不烦人的广告，甚至让人喜欢的广告很有挑战。对比移动广告与PC广告，有两点不同:
+							<p class="view-detail text-right"><a>阅读全文 >></a></p>
+						</div>
+					</div>
+					<div class="blog-item">
+						<div class="blog-head">
+							<div class="clearfix">
+								<img src="../images/me.png">
+								<h2 title="我是标题，我显眼"><a href="#">我是标题，我显眼</a></h2>
+								<div class="blog-time">2014-06-21</div>
+								<div class="blog-actions">
+									<label><i class="iconfont">&#xe601;</i>  0</label>
+									<label><i class="iconfont">&#xe604;</i>  2/1023</label>
+								</div>
+							</div>
+						</div>
+						<div class="blog-content">
+							移动互联网时代也全面到来，如何利用广告这一传统的主流盈利模式，让移动apps的巨大流量得以变现，产生更多的商业价值，越来越值得研究。我们《移动广告研究》课题组已对各类的移动应用做了拉网式研究。作为课题成员之一，对现在移动apps的主流广告模式做了梳理。
+							广告是个两极化的商品产品。广告主和媒体爱它，因为能赚钱，而且做得好能赚大钱；普通用户很烦它，希望它永远滚出自己的视线。所以做出不烦人的广告，甚至让人喜欢的广告很有挑战。对比移动广告与PC广告，有两点不同:
+							<p class="view-detail text-right"><a>阅读全文 >></a></p>
+						</div>
+					</div>
+					<div id="pagination" class="text-right">
+						<ul class="pagination pagination-sm">
+ 	 						<li><a href="#">&laquo;上一页</a></li>
+						 	<li><a href="#">1</a></li>
+						  	<li><a href="#">2</a></li>
+						  	<li><a href="#">3</a></li>
+						  	<li><a href="#">4</a></li>
+						  	<li><a href="#">5</a></li>
+						  	<li><a href="#">&raquo;下一页</a></li>
+						</ul>	
+					</div>
+				</div>
+			</div>
+		</div>
+	{{include "footer.html"}}
 </body>
 </html>

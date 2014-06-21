@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
+	<style type="text/css">
+	@font-face {
+	  font-family: 'iconfont';
+	  src: url('http://at.alicdn.com/t/font_1402382156_771556.eot'); /* IE9*/
+	  src: url('http://at.alicdn.com/t/font_1402382156_771556.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	  url('http://at.alicdn.com/t/font_1402382156_771556.woff') format('woff'), /* chrome、firefox */
+	  url('http://at.alicdn.com/t/font_1402382156_771556.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+	  url('http://at.alicdn.com/t/font_1402382156_771556.svg#iconfont') format('svg'); /* iOS 4.1- */
+	}
+	.iconfont{
+		font-family:"iconfont";
+		font-size:16px;
+		font-style:normal;
+		color: rgba(0,0,0,0.44);
+	}
+	html{overflow-x: hidden;}
+	body {
+		background: url(../images/bg.png) repeat 0 0;
+		padding: 30px;
+		overflow-x: hidden;
+	}
+	.nav-container {
+		position: relative;
+		z-index: 10;
+		background: #fff;
+	}
+	.hover-layer {
+		position: absolute;
+		top: 0;
+		background: #f8f8f8;
+		height: 39px;
+		width: 100%;
+		z-index: -1;
+		transition: top 0.2s;
+		-webkit-transition: top 0.2s ease-out 0s;
+		-moz-transition: top 0.2s;
+	}
+	.hover-layer:before {
+		content: "";
+		width: 8px;
+		height: 39px;
+		position: absolute;
+		top: 0;
+		left: -8px;
+		background: #ff5f3e;
+	}
+	.nav-list {
+		list-style: none;
+		padding: 0 20px;
+	}
+	.nav-list>li {
+		border-bottom: 1px solid #f8f8f8;
+	}
+	.nav-list>li.active a {
+		color: #ff5f3e;
+	}
+	.nav-list>li>a {
+		color: #606566;
+		padding: 9px 0;
+		display: block;
+		transition: color 0.2s;
+		-webkit-transition: color 0.2s;
+		-moz-transition: color 0.2s;
+	}
+	.nav-list>li>a:hover {
+		text-decoration: none;
+	}
+	.nav-list>li.lev2 {
+		padding-left: 30px;
+	}
+	</style>
+</head>
+<body>
+	<div class="nav-container">
+		<div class="hover-layer"></div>
+		<ul class="nav-list">
+			<li class="lev1"><a href="#">首页</a></li>
+			<li class="lev1"><a href="#">文章</a></li>
+			<li class="lev2"><a href="#">前端技术</a></li>
+			<li class="lev2"><a href="#">交互设计</a></li>
+			<li class="lev2"><a href="#">视觉设计</a></li>
+			<li class="lev1"><a href="#">归档</a></li>
+			<li class="lev1"><a href="#">关于</a></li>
+		</ul>
+	</div>
+<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	$(".nav-list").on("mouseenter", "li", function(evt) {
+		var $dom = $(this);
+		var _top = ($dom.index()) * $dom.outerHeight();
+		$(".hover-layer").css('top', _top);
+		$(".nav-list>li.active").removeClass("active");
+		$dom.addClass('active');
+	});
+});
+</script>
+</body>
+</html>
