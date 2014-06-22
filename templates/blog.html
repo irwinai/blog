@@ -15,7 +15,7 @@
 		font-size: 12px;
 	}
 	.blog-list .blog-head{
-		height: 60px;
+		min-height: 60px;
 		border-bottom: 1px solid #f8f8f8;
 		padding: 10px;
 		background: #fff;
@@ -26,23 +26,9 @@
 		float: left;
 	}
 	.blog-list .blog-head h2 {
-		float: left;
 		font-weight: normal;
-		line-height: 45px;
 		margin: 0;
-		margin-left: 10px;
 		font-size: 18px;
-		max-width: 480px;
-		overflow: hidden;
-		white-space: nowrap;
-		text-overflow: ellipsis;
-	}
-	.blog-list .blog-head h2 a{
-		color: rgba(0,0,0,0.66);
-		text-decoration: none;
-	}
-	.blog-list .blog-head h2 a:hover{
-		color: rgba(0,0,0,0.88);
 	}
 	.blog-list .blog-head .blog-time {
 		float: left;
@@ -53,7 +39,6 @@
 	}
 	.blog-list .blog-actions {
 		float: right;
-		line-height: 45px;
 	}
 	.blog-list .blog-actions label {
 		font-weight: normal;
@@ -118,11 +103,10 @@
 		padding: 0 5px;
 		font-size: 22px;
 	}
-	.media-heading a{
+	.author-link{
 		color:#ff5f3e;
-		font-size: 14px;
 	}
-	.media-heading a:hover{
+	.author-link:hover{
 		color: #ff5f3e !important;
 	}
 	.blog-list .blog-comment .add-comment{
@@ -170,15 +154,25 @@
 				<div class="blog-list">
 					<div class="blog-item">
 						<div class="blog-head clearfix">
-							<a href="" alt="irving" class="img-effect">
-								<img src="../images/me.png">
-								<i class="img-blur"></i>
-							</a>	
-							<h2 title="我是标题，我显眼">我是标题，我显眼</h2>
-							<div class="blog-time">2014-06-21</div>
-							<div class="blog-actions">
-								<label><i class="iconfont">&#xe601;</i>  0</label>
-								<label><i class="iconfont">&#xe604;</i>  2/1023</label>
+							<div class="media">
+							  	<a class="pull-left img-effect" href="#">
+							    	<img class="media-object" src="../images/me.png" alt="...">
+							    	<i class="img-blur"></i>
+							 	</a>
+							 	<div class="media-body">
+							   		<div class="media-heading">
+							   			<h2 title="我是标题，我显眼">我是标题，我显眼,要做一个纯粹的人，做一个脱离了低级趣味的人，我打这么么多字，只是为了测试一下这个div的长度超长的情况而已</h2>
+							    	</div>
+							    	<div class="blog-info">
+							    		<span>作者: <a class="author-link" href="#">小艾同学</a></span>
+							    		&nbsp;|&nbsp;
+							    		<span>发表于: 2014-09-11 下午3:20</span>
+							    		<span class="blog-actions">
+							    			<label><i class="iconfont">&#xe601;</i>  0</label>
+											<label><i class="iconfont">&#xe604;</i>  2/1023</label>
+							    		</span>
+							    	</div>
+							  	</div>
 							</div>
 						</div>
 						<div class="blog-bg">
@@ -208,7 +202,7 @@
 									 	</a>
 									  	<div class="media-body">
 									    	<div class="media-heading">
-									    		<a href="#">逗比</a>:
+									    		<a class="author-link" href="#">逗比</a>:
 									    		你这是作死的行为吗？
 									    	</div>
 									    	<p class="comment-time">2014-06-21 14:22:00</p>
@@ -222,7 +216,7 @@
 									 	</a>
 									  	<div class="media-body">
 									    	<div class="media-heading">
-									    		<a href="#">逗比</a>:
+									    		<a class="author-link" href="#">逗比</a>:
 												fff
 									    	</div>
 									 		<p class="comment-time">2014-06-21 14:22:00</p>
@@ -236,7 +230,7 @@
 									 	</a>
 									 	<div class="media-body">
 									   		<div class="media-heading">
-									   			<a href="#">逗比</a>:
+									   			<a class="author-link" href="#">逗比</a>:
 									    		你这是作死的行为吗？
 									    	</div>
 									    	<p class="comment-time">2014-06-21 14:22:00</p>
