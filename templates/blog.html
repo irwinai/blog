@@ -5,6 +5,12 @@
 	<meta charset="UTF-8" />
 	<link rel="shortcut icon" href="../images/favicon.ico">
 	<style type="text/css">
+	.iconpage{
+		font-family:"iconfont";
+		font-size:60px;
+		font-style:normal;
+		color: rgba(0,0,0,0.44);
+	}
 	.blog-list .blog-item {
 		font-size: 12px;
 	}
@@ -136,6 +142,22 @@
 	.comments .comment-time{
 		color: #bebebe;
 	}
+	.page a{
+		text-decoration: none !important;
+	}
+	.page a:hover i{
+		color: #ff5f3e;
+	}
+	.page .pos{
+		position: fixed;
+		top: 180px;
+	}
+	.page .back{
+		left: 0;
+	}
+	.page .go{
+		right: 0;
+	}
 	</style>
 </head>
 <body>
@@ -148,7 +170,10 @@
 				<div class="blog-list">
 					<div class="blog-item">
 						<div class="blog-head clearfix">
-							<a href="" alt="irving"><img src="../images/me.png"></a>
+							<a href="" alt="irving" class="img-effect">
+								<img src="../images/me.png">
+								<i class="img-blur"></i>
+							</a>	
 							<h2 title="我是标题，我显眼">我是标题，我显眼</h2>
 							<div class="blog-time">2014-06-21</div>
 							<div class="blog-actions">
@@ -158,54 +183,13 @@
 						</div>
 						<div class="blog-bg">
 							<div class="blog-content">
-							交互设计师如何培养数据分析的能力呢？
-首先，要有数据收集分析的意识，掌握数据产生的来源；
-
-其次，拿到数据后，在数据间找关联性，深挖内在含义；
-
-再次，掌握基本的数据分析方法，并在实战中加以应用；
-
-最后，将分析的结果应用到后续工作中，检验分析结果。
-
-如此，循环往复，形成一种职业习惯，一个工作的流程。
-
- 
-
-
-
-从平时的工作中，总结出以下几点数据分析时要注意的原则，在这里抛砖引玉，欢迎来拍：
-
-1、明确数据分析的目的
-
-要分析一份数据，首先得先明确自己的目的：为什么要收集并分析这样一份数据？只有你的目的明确了之后，才能对接下来你要收集哪些数据、如何收集有一个整体的把握。当然你的目的可以是多个小点，（如：用户在首页浏览了哪些内容？登录框在页面上的重要程度？）只要这些点是一个个切实待解决的问题点，将其罗列下来，一个一个的去收集数据。
-
-你分析的结果可能会改变整个项目，但有了数据的支撑，会让项目或需求有一个全新的开始或细节的调整。
-
-
-2、了解数据来源并收集
-
-按照分析的目标中罗列的点，建立一个分析框架，并按照轻重缓急进行数据收集。与此同时，需要对数据是如何产生的，如何获取这些数据进行相应的了解。在工作中应用到的数据统计工具有：金牌令箭、显微镜、CNZZ统计等，通过这些统计工具可以方便的进行数据的收集，同时交互设计师也要与前端保持沟通，了解数据统计的方法，适时添加统计的维度，请前端同学帮忙埋统计代码。
-
-
-
-3、掌握数据分析的方法
-
-作为交互设计师，要掌握几种基本的数据分析方法：对比分析法、分组分析法、结构分析法、平均分析法、交叉分析法……基于这些分析方法，我们可以对现状、原因、未来有初步的了解，并进入后续更深入的分析。如：现状分析适用于对现今站点或页面的浏览点击情况做一个数据统计与热点分析，可以得出用户的浏览路径及关注重点。原因分析则侧重于一个问题，深入挖掘答案。未来分析可用于与产品经理沟通时，对后期产品的规划进行数据交流。
-
-
-4、沟通分析结果
-
-在沟通分析结果前，要注意不要只用手上仅有的资讯作判断，如果手上的证据不足以完全反应实际状况的时候，以数据分析结果作为决策就很容易出错，尤其是单看某一个数据维度时。交互设计师要超前思考，考虑产品经理可能从中提出的问题，并给出回应。让沟通高效且有意义。
-
-
-
-5、骗人的分析结果
-
-
-数据是会骗人的。其中最有名的例子就是辛普森悖论。一所美国高校的两个学院，分别是法学院和商学院，开学时，人们以为有性别歧视。
-
-法学院：（女生录取率高）
-
+								交互设计师如何培养数据分析的能力呢？
+								首先，要有数据收集分析的意识，掌握数据产生的来源；
+								从平时的工作中，总结出以下几点数据分析时要注意的原则，在这里抛砖引玉，欢迎来拍：
+								1、明确数据分析的目的
+								你分析的结果可能会改变整个项目，但有了数据的支撑，会让项目或需求有一个全新的开始或细节的调整。
+								2、了解数据来源并收集
+								按照分析的目标中罗列的点，建立一个分析框架，并按照轻重缓急进行数据收集。与此同时，需要对数据是如何产生的，如何获取这些数据进行相应的了解。在工作中应用到的数据统计工具有：金牌令箭、显微镜、CNZZ统计等，通过这些统计工具可以方便的进行数据的收集，同时交互设计师也要与前端保持沟通，了解数据统计的方法，适时添加统计的维度，请前端同学帮忙埋统计代码。
 							</div>
 							<div class="blog-comment">
 								<div class="comment-des">
@@ -218,51 +202,58 @@
 								</div>
 								<div class="comments">
 									<div class="media">
-									  <a class="pull-left" href="#">
-									    <img class="media-object" src="../images/me.png" alt="...">
-									  </a>
-									  <div class="media-body">
-									    <div class="media-heading"><a href="#">逗比</a>:
-									    	你这是作死的行为吗？
-									    </div>
-									    
-									    <p class="comment-time">2014-06-21 14:22:00</p>
-									  </div>
+									  	<a class="pull-left img-effect" href="#">
+									    	<img class="media-object" src="../images/me.png" alt="...">
+									    	<i class="img-blur"></i>
+									 	</a>
+									  	<div class="media-body">
+									    	<div class="media-heading">
+									    		<a href="#">逗比</a>:
+									    		你这是作死的行为吗？
+									    	</div>
+									    	<p class="comment-time">2014-06-21 14:22:00</p>
+									  	</div>
 									</div>
 
 									<div class="media">
-									  <a class="pull-left" href="#">
-									    <img class="media-object" src="../images/me.png" alt="...">
-									  </a>
-									  <div class="media-body">
-									    <div class="media-heading"><a href="#">逗比</a>:
-你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？你这是作死的行为吗？
-									    </div>
-									 	<p class="comment-time">2014-06-21 14:22:00</p>
-									  </div>
+									  	<a class="pull-left img-effect" href="#">
+									    	<img class="media-object" src="../images/me.png" alt="...">
+									    	<i class="img-blur"></i>
+									 	</a>
+									  	<div class="media-body">
+									    	<div class="media-heading">
+									    		<a href="#">逗比</a>:
+												fff
+									    	</div>
+									 		<p class="comment-time">2014-06-21 14:22:00</p>
+									  	</div>
 									</div>
 
 									<div class="media">
-									  <a class="pull-left" href="#">
-									    <img class="media-object" src="../images/me.png" alt="...">
-									  </a>
-									  <div class="media-body">
-									    <div class="media-heading"><a href="#">逗比</a>:
-									    	你这是作死的行为吗？
-									    </div>
-									    <p class="comment-time">2014-06-21 14:22:00</p>
-									  </div>
+									  	<a class="pull-left img-effect" href="#">
+									    	<img class="media-object" src="../images/me.png" alt="...">
+									    	<i class="img-blur"></i>
+									 	</a>
+									 	<div class="media-body">
+									   		<div class="media-heading">
+									   			<a href="#">逗比</a>:
+									    		你这是作死的行为吗？
+									    	</div>
+									    	<p class="comment-time">2014-06-21 14:22:00</p>
+									  	</div>
 									</div>
 								</div>
 								<div class="add-comment">
 									<div class="media">
-									  	<a class="pull-left" href="#">
+									  	<a class="pull-left img-effect" href="#">
 									    	<img class="media-object" src="../images/me.png" alt="...">
-									  	</a>
+									    	<i class="img-blur"></i>
+									 	</a>
 									  	<div class="media-body">
 									  		<textarea placeholder="说点什么吧..." class="form-control" rows="5"></textarea>
 									  		<button class="btn btn-default">发表评论</button>
 									  	</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -270,6 +261,15 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="page">
+		<div class="back pos">
+			<a href="#" alt="上一篇"><i class="iconpage">&#xe602;</i></a>
+		</div>
+		<div class="go pos">
+			<a href="#" alt="下一篇"><i class="iconpage">&#xe603;</i></a>
+		</div>
+	</div>
 	{{include "footer.html"}}
 	<script type="text/javascript">
 		$(function(){
