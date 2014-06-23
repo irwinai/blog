@@ -8,11 +8,11 @@
 	<style type="text/css">
 	@font-face {
 	  font-family: 'iconfont';
-	  src: url('http://at.alicdn.com/t/font_1403363130_7848055.eot'); /* IE9*/
-	  src: url('http://at.alicdn.com/t/font_1403363130_7848055.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-	  url('http://at.alicdn.com/t/font_1403363130_7848055.woff') format('woff'), /* chrome、firefox */
-	  url('http://at.alicdn.com/t/font_1403363130_7848055.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-	  url('http://at.alicdn.com/t/font_1403363130_7848055.svg#iconfont') format('svg'); /* iOS 4.1- */
+	  src: url('http://at.alicdn.com/t/font_1403530757_9974205.eot'); /* IE9*/
+	  src: url('http://at.alicdn.com/t/font_1403530757_9974205.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	  url('http://at.alicdn.com/t/font_1403530757_9974205.woff') format('woff'), /* chrome、firefox */
+	  url('http://at.alicdn.com/t/font_1403530757_9974205.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+	  url('http://at.alicdn.com/t/font_1403530757_9974205.svg#iconfont') format('svg'); /* iOS 4.1- */
 	}
 	.iconfont{
 		font-family:"iconfont";
@@ -33,7 +33,7 @@
 	}
 	.hover-layer {
 		position: absolute;
-		top: 0;
+		top: 130px;
 		background: #f8f8f8;
 		height: 39px;
 		width: 100%;
@@ -99,25 +99,86 @@
 		-moz-transition: .5s;
 		-webkit-transition: .5s;
 	}
+	.search-bar{
+		margin: 20px 0;
+		position: relative;
+	}
+	.search-bar .sub-search{
+		border: none;
+		background: transparent;
+		position: absolute;
+		top: 1px;
+		right: 0;
+		font-size: 20px;
+		outline: none;
+	}
+	.container .search {
+		border: none;
+		box-shadow: none;
+		background-color: #efefef;
+		-webkit-transition: all 0.4s;
+		color: #606566;
+		height: 30px;
+	}
+	.container .search:focus {
+		border: none;
+		box-shadow: none;
+		background-color: #ff5f3e;
+	}
+	.container .search:hover {
+		background-color: #ff5f3e;
+	}
+	.user-box{
+		height: 100px;
+		background-color: #ff5f3e;
+		margin-bottom: 30px;
+		color: #fff;
+	}
+	.user-box a{
+		color: #fff;
+		
+	}
+	.user-box a i{
+		color: #fff;
+	}
+	.user-box img{
+		height: 60px;
+		width: 60px;
+		margin: 20px 20px 20px 40px;
+	}
 	</style>
 </head>
 <body>
 	<div class="nav-container">
 		<div class="hover-layer"></div>
+		<div class="user-box"> 
+			<a href="#">
+				<img src="../images/me.png" />
+			</a>
+			<a href="#"><i class="iconfont">&#xe600;</i> 设置</a>
+			|
+			<a href="#"><i class="iconfont">&#xe607;</i> 退出</a>
+		</div>
 		<ul class="nav-list">
-			<li class="lev1"><a href="#">首页</a></li>
-			<li class="lev1 li-art"><a href="/blog/list">文章</a></li>
-			<li class="lev2"><a href="#">前端技术</a></li>
-			<li class="lev2"><a href="#">交互设计</a></li>
-			<li class="lev2"><a href="#">视觉设计</a></li>
-			<li class="lev1 li-archive"><a href="/blog/archive">归档</a></li>
-			<li class="lev1 li-about"><a href="/about">关于</a></li>
+			<li class="lev1 nav-item"><a href="#">首页</a></li>
+			<li class="lev1 nav-item li-art"><a href="/blog/list">文章</a></li>
+			<li class="lev2 nav-item"><a href="#">前端技术</a></li>
+			<li class="lev2 nav-item"><a href="#">交互设计</a></li>
+			<li class="lev2 nav-item"><a href="#">视觉设计</a></li>
+			<li class="lev1 nav-item li-archive"><a href="/blog/archive">归档</a></li>
+			<li class="lev1 nav-item li-about"><a href="/about">关于</a></li>
+			<li class="levl1">
+				<form class="search-bar">
+					<input type="search" class="form-control search" />
+					<button type="submit" class="iconfont sub-search">&#xe605;</button>
+				</form>
+			</li>
 		</ul>
 	</div>
 <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		$(".nav-list").on("mouseenter", "li", function(evt) {
+		$(".nav-list").on("mouseenter", "li.nav-item", function(evt) {
 			getFocus($(this));
 		});
 
@@ -128,7 +189,7 @@
 	});
 
 	function getFocus($dom,flag){
-		var _top = ($dom.index()) * $dom.outerHeight();
+		var _top = ($dom.index()) * $dom.outerHeight()+130;
 		$(".hover-layer").css('top', _top);
 		$(".nav-list>li.active").removeClass("active");
 		$dom.addClass('active');
