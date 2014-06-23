@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	. "github.com/irving/blog/actions"
+	. "github.com/irwinai/blog/actions"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/lunny/config"
