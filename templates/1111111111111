@@ -1,0 +1,9 @@
+<VirtualHost 113.10.137.207:80>
+    DocumentRoot /var/www/html/wordpress
+    ServerName jastate.com
+</VirtualHost>
+
+<VirtualHost 113.10.137.207:80>
+    DocumentRoot /var/www/html/go
+    ServerName new.jastate.com
+</VirtualHost>

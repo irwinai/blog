@@ -11,8 +11,13 @@ type HomeAction struct {
 
 	login xweb.Mapper
 	about xweb.Mapper
+	test  xweb.Mapper
 
 	User User
+}
+
+func (c *HomeAction) Test() {
+	c.Render("editor_test.html")
 }
 
 func (c *HomeAction) About() {
