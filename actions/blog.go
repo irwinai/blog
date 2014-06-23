@@ -5,8 +5,9 @@ import "github.com/lunny/xweb"
 type BlogAction struct {
 	BaseAction
 
-	list   xweb.Mapper
-	detail xweb.Mapper
+	list    xweb.Mapper
+	detail  xweb.Mapper
+	archive xweb.Mapper
 }
 
 func (c *BlogAction) List() error {
@@ -15,4 +16,8 @@ func (c *BlogAction) List() error {
 
 func (c *BlogAction) Detail() error {
 	return c.Render("blog.html")
+}
+
+func (c *BlogAction) Archive() error {
+	return c.Render("archive.html")
 }

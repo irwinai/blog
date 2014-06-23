@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="UTF-8" />
+	<link rel="shortcut icon" href="../images/favicon.ico">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				{{include "nav.html"}}
+			</div>
+			<div class="col-md-9">
+				<p class="lead">
+					这是文章归档
+				</p>
+			</div>
+		</div>
+	</div>
+	{{include "footer.html"}}
+	<script type="text/javascript">
+		$(function(){
+			getFocus($(".nav-list .li-archive"),true);
+		});
+	</script>
+</body>
+</html>

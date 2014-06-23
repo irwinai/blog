@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="UTF-8" />
+	<link rel="shortcut icon" href="../images/favicon.ico">
+	<style type="text/css">
+	.lead{
+		background: #fff;
+		padding: 10px;
+		min-height: 300px;
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				{{include "nav.html"}}
+			</div>
+			<div class="col-md-9">
+				<p class="lead">
+					好吧，这个页面就留在这里，到时候后台会有一个可以编辑关于页面的地方。
+					OK，nice。。。。
+				</p>
+			</div>
+		</div>
+	</div>
+	{{include "footer.html"}}
+	<script type="text/javascript">
+		$(function(){
+			getFocus($(".nav-list .li-about"),true);
+		});
+	</script>
+</body>
+</html>
