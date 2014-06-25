@@ -9,9 +9,10 @@ import (
 type HomeAction struct {
 	BaseAction
 
-	login xweb.Mapper
-	about xweb.Mapper
-	test  xweb.Mapper
+	login  xweb.Mapper
+	logout xweb.Mapper
+	about  xweb.Mapper
+	test   xweb.Mapper
 
 	User User
 }
@@ -22,6 +23,11 @@ func (c *HomeAction) Test() {
 
 func (c *HomeAction) About() {
 	c.Render("about.html")
+}
+
+func (c *HomeAction) Logout() {
+	c.Session().Invalidate(c.ResponseWriter)
+	c.Go("login")
 }
 
 func (c *HomeAction) Login() {

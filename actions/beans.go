@@ -47,11 +47,11 @@ type BlogTag struct {
 }
 
 type Category struct {
-	Id       int    `xorm:"not null pk autoincr INT(11)"`
-	Name     string `xorm:"not null VARCHAR(10)"`
-	EnName   string `xorm:"VARCHAR(10)"`
-	Status   int    `xorm:"not null default 1 TINYINT(4)"`
-	ParentId int    `xorm:"default 0 INT(11)"`
+	Id     int    `xorm:"not null pk autoincr INT(11)"`
+	Name   string `xorm:"not null VARCHAR(10)"`
+	EnName string `xorm:"VARCHAR(10)"`
+	Status int    `xorm:"not null default 1 TINYINT(4)"`
+	//	ParentId int    `xorm:"default 0 INT(11)"`
 }
 
 type Comment struct {

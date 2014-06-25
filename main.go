@@ -13,7 +13,6 @@ import (
 
 func main() {
 	//读取配置文件，创建数据库连接
-	fmt.Println("开始读取配置文件...")
 	cfg, err := config.Load("config.ini")
 	if err != nil {
 		fmt.Println(err)
@@ -50,6 +49,11 @@ func main() {
 		cacher := xorm.NewLRUCacher(xorm.NewMemoryStore(), 1000)
 		orm.SetDefaultCacher(cacher)
 	}
+
+	//login filter
+	// filter := xweb.NewLoginFilter(app, USER_ID, "/login")
+	// filter.AddAnonymousUrls("/", "/login", "/about")
+	// app.AddFilter(filter)
 
 	// add actions
 	xweb.AddAction(&HomeAction{})
