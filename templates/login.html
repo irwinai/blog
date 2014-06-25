@@ -5,12 +5,10 @@
     <link rel="shortcut icon" href="../images/ico.ico">
 	<link rel="stylesheet" type="text/css" href="../css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="../css/login.css">
-	<title></title>
+	<title>登入</title>
 </head>
 <body>
-	<canvas id="blur" width="688" height="461"></canvas>
 	<div class="login-wrapper">
-		<div class="login-header">登录</div>
 		<div class="login-form">
 			<div class="input-wrapper">
 				<input type="text" class="field" id="username" placeholder="用户名" />
@@ -19,35 +17,27 @@
 			<div class="input-wrapper">
 				<input type="password" class="field" id="password" placeholder="密码"/>
 				<div class="underline"></div>
-			</div>
-			<div class="input-wrapper rem">
-				<label><input id="remember" type="checkbox" />记住我的登入状态</label>
-			</div>
-			<div class="login-btn">
-				<img class="submit" id="submit" src="../images/login.png" />
-			</div>
-			<div class="login-load">
-				<img class="load" src="../images/load.gif" />
+                <i class="iconfont" id="submit">&#xe600;</i>
+                <i class="iconfont" id="sub-loading">&#xe601;</i>
 			</div>
 		</div>
 	</div>
-
+    <img id="background" alt="background" src="" />
 	<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="../js/blur.js"></script>
+    <script type="text/javascript" src="../js/rainyday.js"></script>
     <script type="text/javascript">
-        var img = new Image();
-        img.onload = function(){
-            var canvas = $('#blur').get(0);
-            var ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0);
-            varBlur(ctx, function(x, y){
-                var z = Math.sqrt(canvas.height) ;
-                return z || 1;
+        function run() {
+            $('#background').load(function() {
+                var engine = new RainyDay({
+                    image: this
+                });
+                engine.rain([ [3, 2, 2] ], 100);
             });
+            $('#background').attr('src','../images/login-bg.jpg');
         }
-        img.src = "../images/2.jpg";
 
         $(function(){
+            run();
         	$("#submit").click(function(){
         		login();
         	});
@@ -72,19 +62,18 @@
         			url : "/login",
         			dataType : "json",
         			beforeSend: function(){
-        				$(".login-btn").hide();
-        				$(".login-load").show();
+        				$("#submit").hide();
+        				$("#sub-loading").show();
+                        setTimeout("2000");
         			},
         			type : "post",
         			data:{"user":JSON.stringify(user)},
         			success: function(data){
         				if(data.status == 0){
         					shake();
-        					$(".login-load").hide();
-        					$(".login-btn").show();
+        					$("#sub-loading").hide();
+        					$("#submit").show();
         				}else{
-        					$(".login-load").hide();
-        					$(".login-btn").show();
         					window.location.href = "blog/list";
         				}
         			}

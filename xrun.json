@@ -1,0 +1,6 @@
+{
+    "ExcludeDirs": {
+        ".git":true,
+        ".svn":true
+    }
+}

@@ -17,7 +17,7 @@ type HomeAction struct {
 }
 
 func (c *HomeAction) Test() {
-	c.Render("editor_test.html")
+	c.Render("test.html")
 }
 
 func (c *HomeAction) About() {

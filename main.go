@@ -13,7 +13,7 @@ import (
 
 func main() {
 	//读取配置文件，创建数据库连接
-	var err error
+	fmt.Println("开始读取配置文件...")
 	cfg, err := config.Load("config.ini")
 	if err != nil {
 		fmt.Println(err)
