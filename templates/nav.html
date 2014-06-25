@@ -4,8 +4,8 @@
 	<title></title>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="../css/nav.css">
+	<link rel="stylesheet" type="text/css" href="{{StaticUrl "bootstrap/css/bootstrap.css"}}">
+	<link rel="stylesheet" type="text/css" href="{{StaticUrl "css/nav.css"}}">
 </head>
 <body>
 	<div class="nav-container">
@@ -14,7 +14,7 @@
 			<a href="#">
 				<img src="../images/me.png" />
 			</a>
-			<a href="#"><i class="iconfont">&#xe600;</i> 管理</a>
+			<a href="/manager"><i class="iconfont">&#xe600;</i> 管理</a>
 			|
 			<a href="/logout"><i class="iconfont">&#xe607;</i> 退出</a>
 		</div>
@@ -34,7 +34,7 @@
 			</li>
 		</ul>
 	</div>
-<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="{{StaticUrl "js/jquery-1.9.1.min.js"}}"></script>
+<script type="text/javascript" src="{{StaticUrl "js/common.js"}}"></script>
 </body>
 </html>
