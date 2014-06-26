@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+	<title>管理</title>
+	<meta charset="UTF-8" />
+	<link rel="shortcut icon" href="{{StaticUrl "images/favicon.ico"}}">
+	<link rel="stylesheet" type="text/css" href="{{StaticUrl "css/sider.css"}}">
+	<style type="text/css">
+		.div-wrapper .blog-content {
+			text-indent: 0;
+			min-height: 500px;
+			background: #fff;
+			background: rgba(255,255,255,0.9);
+			background: -webkit-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
+			background: -moz-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
+			background: -ms-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
+			background: -o-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
+			background: linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				{{include "manager/nav.html"}}
+			</div>
+			<div class="col-md-9">
+				<div class="div-wrapper">
+					<div class="blog-item">
+						<div class="blog-content">
+							<form class="form-horizontal" role="form" action="/blog/add" method="POST">
+							  	<div class="form-group">
+								    <label class="col-sm-2 control-label">标题</label>
+								    <div class="col-sm-10">
+								      	<input type="text" class="form-control" id="title" name="blog.title" placeholder="请输入标题">
+								    </div>
+							   	</div>
+							  	<div class="form-group">
+							    	<label class="col-sm-2 control-label">分类</label>
+							    	<div class="col-sm-10">
+							    			{{range .T.categories}}
+							    				<label  class="checkbox-inline"><input type="checkbox" name="cat" value="{{.Id}}"/> {{.Name}}</label>
+							    			{{end}}
+							    	</div>
+							  </div>
+							  <div class="form-group">
+							  		<label class="col-sm-2 control-label">分类</label>
+							    	<div class="col-sm-offset-2 col-sm-10">
+							      
+							    	</div>
+							  </div>
+							  <div class="form-group">
+							    <div class="col-sm-offset-2 col-sm-10">
+							      <button type="submit" class="btn btn-default">Sign in</button>
+							    </div>
+							  </div>
+							</form>
+						</div>
+					</div>
+				</p>
+			</div>
+		</div>
+	</div>
+	{{include "footer.html"}}
+	<script type="text/javascript">
+		$(function(){
+			getFocus($(".nav-list .li-add-blog"),true);
+		});
+	</script>
+</body>
+</html>

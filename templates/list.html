@@ -3,95 +3,41 @@
 <head>
 	<title></title>
 	<meta charset="UTF-8" />
-	<link rel="shortcut icon" href="../images/favicon.ico">
+	<link rel="shortcut icon" href="{{StaticUrl "images/favicon.ico"}}">
+	<link rel="stylesheet" type="text/css" href="{{StaticUrl "css/sider.css"}}">
 	<style type="text/css">
-	.blog-list .blog-item {
-		font-size: 12px;
-	}
-	.blog-list .blog-head{
-		height: 60px;
-		border-bottom: 1px solid #f8f8f8;
-		padding: 10px;
-		background: #fff;
-	}
-	.blog-list .blog-head img {
-		width: 45px;
-		height: 45px;
-		float: left;
-	}
-	.blog-list .blog-head h2 {
-		float: left;
-		font-weight: normal;
-		line-height: 45px;
-		margin: 0;
-		margin-left: 10px;
-		font-size: 18px;
-		max-width: 480px;
-		overflow: hidden;
-		white-space: nowrap;
-		text-overflow: ellipsis;
-	}
-	.blog-list .blog-head h2 a{
-		color: rgba(0,0,0,0.66);
-		text-decoration: none;
-	}
-	.blog-list .blog-head h2 a:hover{
-		color: rgba(0,0,0,0.88);
-	}
-	.blog-list .blog-head .blog-time {
-		float: left;
-		line-height: 45px;
-		font-size: 13px;
-		color: rgba(0,0,0,0.44);
-		margin-left: 10px;
-	}
-	.blog-list .blog-actions {
-		float: right;
-		line-height: 45px;
-	}
-	.blog-list .blog-actions label {
-		font-weight: normal;
-		color: rgba(0,0,0,0.44);
-		margin-left: 10px;
-		cursor: pointer;
-	}
-	.blog-list .blog-actions label:hover{
-		color: rgba(0,0,0,0.88);
-	}
-	.blog-list .blog-actions label:hover i {
-		color: rgba(0,0,0,0.88);
-	}
-	.blog-list .blog-content {
-		min-height: 300px;
-		font-size: 14px;
-		padding: 10px;
-		text-indent: 2em;
-		background: #fff;
-		background: rgba(255,255,255,0.9);
-		background: -webkit-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
-		background: -moz-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
-		background: -ms-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
-		background: -o-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
-		background: linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
-	}
-	.blog-list .view-detail {
-		margin: 10px 0;
-	}
-	.blog-list .view-detail>a {
-		color: rgba(0,0,0,0.44);
-		cursor: pointer;
-		text-decoration: none;
-	}
-	.blog-list .view-detail>a:hover {
-		color: rgba(0,0,0,0.66);
-	}
-	#pagination{
-		margin-right: 20px;
-	}
-	#pagination a{
-		color: rgba(0,0,0,0.88);
-		padding: 7px 15px;
-	}
+		.div-wrapper .blog-head{
+			height: 60px;
+		}
+		.div-wrapper .blog-head h2{
+			float: left;
+			line-height: 45px;
+			margin-left: 10px;
+			max-width: 480px;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+		.div-wrapper .blog-head h2 a{
+			color: rgba(0,0,0,0.66);
+			text-decoration: none;
+		}
+		.div-wrapper .blog-head h2 a:hover{
+			color: rgba(0,0,0,0.88);
+		}
+		.div-wrapper .blog-actions {
+			line-height: 45px;
+		}
+		.div-wrapper .blog-content {
+			min-height: 300px;
+			background: #fff;
+			background: rgba(255,255,255,0.9);
+			background: -webkit-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
+			background: -moz-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
+			background: -ms-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
+			background: -o-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
+			background: linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
+		}
 	</style>
 </head>
 <body>
@@ -101,14 +47,14 @@
 				{{include "nav.html"}}
 			</div>
 			<div class="col-md-9">
-				<div class="blog-list">
+				<div class="div-wrapper">
 					<div class="blog-item">
 						<div class="blog-head clearfix">
 							<a href="" alt="irving" class="img-effect">
 								<img src="../images/me.png">
 								<i class="img-blur"></i>
 							</a>
-							<h2 title="我是标题，我显眼"><a href="detail">我是标题，我显眼</a></h2>
+							<h2 title="我是标题，我显眼"><a href="/blog/detail">我是标题，我显眼</a></h2>
 							<div class="blog-time">2014-06-21</div>
 							<div class="blog-actions">
 								<label><i class="iconfont">&#xe601;</i>  0</label>

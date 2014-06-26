@@ -3,8 +3,9 @@
 <head>
 	<title></title>
 	<meta charset="UTF-8" />
-	<link rel="shortcut icon" href="../images/favicon.ico">
+	<link rel="shortcut icon" href="{{StaticUrl "images/favicon.ico"}}">
 	<link href="http://cdn.bootcss.com/highlight.js/8.0/styles/tomorrow-night.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{StaticUrl "css/sider.css"}}">
 	<style type="text/css">
 	.iconpage{
 		font-family:"iconfont";
@@ -12,48 +13,13 @@
 		font-style:normal;
 		color: rgba(0,0,0,0.44);
 	}
-	.blog-list .blog-item {
+	.blog-actions i{
 		font-size: 12px;
 	}
-	.blog-list .blog-head{
+	.div-wrapper .blog-head{
 		min-height: 60px;
-		border-bottom: 1px solid #f8f8f8;
-		padding: 10px;
-		background: #fff;
 	}
-	.blog-list .blog-head img {
-		width: 45px;
-		height: 45px;
-		float: left;
-	}
-	.blog-list .blog-head h2 {
-		font-weight: normal;
-		margin: 0;
-		font-size: 18px;
-	}
-	.blog-list .blog-head .blog-time {
-		float: left;
-		line-height: 45px;
-		font-size: 13px;
-		color: rgba(0,0,0,0.44);
-		margin-left: 10px;
-	}
-	.blog-list .blog-actions {
-		float: right;
-	}
-	.blog-list .blog-actions label {
-		font-weight: normal;
-		color: rgba(0,0,0,0.44);
-		margin-left: 10px;
-		cursor: pointer;
-	}
-	.blog-list .blog-actions label:hover{
-		color: rgba(0,0,0,0.88);
-	}
-	.blog-list .blog-actions label:hover i {
-		color: rgba(0,0,0,0.88);
-	}
-	.blog-list .blog-bg {
+	.div-wrapper .blog-bg {
 		padding-bottom: 80px;
 		min-height: 300px;
 		background: #fff;
@@ -64,42 +30,26 @@
 		background: -o-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
 		background: linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
 	}
-	.blog-list .blog-content{
-		font-size: 14px;
-		padding: 10px;
-		text-indent: 2em;
-	}
-	.blog-list .view-detail {
-		margin: 10px 0;
-	}
-	.blog-list .view-detail>a {
-		color: rgba(0,0,0,0.44);
-		cursor: pointer;
-		text-decoration: none;
-	}
-	.blog-list .view-detail>a:hover {
-		color: rgba(0,0,0,0.66);
-	}
-	.blog-list .blog-comment{
+	.div-wrapper .blog-comment{
 		margin: 20px 0 0 30px;
 	}
-	.blog-list .blog-comment img{
+	.div-wrapper .blog-comment img{
 		width: 45px;
 	}
-	.blog-list .blog-comment .comment-des{
+	.div-wrapper .blog-comment .comment-des{
 		color: #666;
 		font-size: 15px;
 	}
-	.blog-list .blog-comment .comment-des a{
+	.div-wrapper .blog-comment .comment-des a{
 		color: #666;
 	}
-	.blog-list .blog-comment .comment-des a:hover{
+	.div-wrapper .blog-comment .comment-des a:hover{
 		color: #ff5f3e !important;
 	}
-	.blog-list .blog-comment .comment-des a:hover i{
+	.div-wrapper .blog-comment .comment-des a:hover i{
 		color: #ff5f3e !important;
 	}
-	.blog-list .blog-comment .comment-des .count{
+	.div-wrapper .blog-comment .comment-des .count{
 		color: rgba(255,0,0,0.88);
 		padding: 0 5px;
 		font-size: 22px;
@@ -110,7 +60,7 @@
 	.author-link:hover{
 		color: #ff5f3e !important;
 	}
-	.blog-list .blog-comment .add-comment{
+	.div-wrapper .blog-comment .add-comment{
 		margin: 40px 10px 0 0;
 	}
 	.add-comment textarea{
@@ -164,7 +114,7 @@
 				{{include "nav.html"}}
 			</div>
 			<div class="col-md-9">
-				<div class="blog-list">
+				<div class="div-wrapper">
 					<div class="blog-item">
 						<div class="blog-head clearfix">
 							<div class="media">

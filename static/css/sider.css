@@ -1,0 +1,63 @@
+.div-wrapper .blog-item {
+	font-size: 12px;
+}
+.div-wrapper .blog-head{
+	border-bottom: 1px solid #f8f8f8;
+	padding: 10px;
+	background: #fff;
+}
+.div-wrapper .blog-head img {
+	width: 45px;
+	height: 45px;
+	float: left;
+}
+.div-wrapper .blog-head h2 {
+	font-weight: normal;
+	margin: 0;
+	font-size: 18px;
+}
+.div-wrapper .blog-head .blog-time {
+	float: left;
+	line-height: 45px;
+	font-size: 13px;
+	color: rgba(0,0,0,0.44);
+	margin-left: 10px;
+}
+.div-wrapper .blog-actions {
+	float: right;
+}
+.div-wrapper .blog-actions label {
+	font-weight: normal;
+	color: rgba(0,0,0,0.44);
+	margin-left: 10px;
+	cursor: pointer;
+}
+.div-wrapper .blog-actions label:hover{
+	color: rgba(0,0,0,0.88);
+}
+.div-wrapper .blog-actions label:hover i {
+	color: rgba(0,0,0,0.88);
+}
+.div-wrapper .blog-content {
+	font-size: 14px;
+	padding: 10px;
+	text-indent: 2em;
+}
+.div-wrapper .view-detail {
+	margin: 10px 0;
+}
+.div-wrapper .view-detail>a {
+	color: rgba(0,0,0,0.44);
+	cursor: pointer;
+	text-decoration: none;
+}
+.div-wrapper .view-detail>a:hover {
+	color: rgba(0,0,0,0.66);
+}
+#pagination{
+	margin-right: 20px;
+}
+#pagination a{
+	color: rgba(0,0,0,0.88);
+	padding: 7px 15px;
+}

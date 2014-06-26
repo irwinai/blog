@@ -2,9 +2,9 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-    <link rel="shortcut icon" href="../images/ico.ico">
-	<link rel="stylesheet" type="text/css" href="../css/normalize.css">
-	<link rel="stylesheet" type="text/css" href="../css/login.css">
+    <link rel="shortcut icon" href="{{StaticUrl "images/favicon.ico"}}">
+	<link rel="stylesheet" type="text/css" href="{{StaticUrl "css/normalize.css"}}">
+	<link rel="stylesheet" type="text/css" href="{{StaticUrl "css/login.css"}}">
 	<title>登入</title>
 </head>
 <body>
@@ -23,8 +23,8 @@
 		</div>
 	</div>
     <img id="background" alt="background" src="" />
-	<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="../js/rainyday.js"></script>
+	<script type="text/javascript" src="{{StaticUrl "js/jquery-1.9.1.min.js"}}"></script>
+    <script type="text/javascript" src="{{StaticUrl "js/rainyday.js"}}"></script>
     <script type="text/javascript">
         function run() {
             $('#background').load(function() {
@@ -37,6 +37,7 @@
         }
 
         $(function(){
+            $("#username").focus();
             run();
         	$("#submit").click(function(){
         		login();

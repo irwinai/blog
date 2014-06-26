@@ -2,5 +2,6 @@
     "ExcludeDirs": {
         ".git":true,
         ".svn":true
-    }
+    },
+    "Model":1
 }

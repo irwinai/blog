@@ -1,6 +1,10 @@
 package actions
 
-import "github.com/lunny/xweb"
+import (
+	"fmt"
+
+	"github.com/lunny/xweb"
+)
 
 type BlogAction struct {
 	BaseAction
@@ -15,7 +19,8 @@ type BlogAction struct {
 
 func (c *BlogAction) Add() {
 	if c.Method() == "GET" {
-		c.Render("manager/article_write.html")
+		c.Render("manager/add-blog.html")
+		fmt.Println(111)
 	} else if c.Method() == "POST" {
 		//c.Orm.Insert(Blog)
 	}
