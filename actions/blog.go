@@ -2,6 +2,8 @@ package actions
 
 import (
 	"fmt"
+	"strings"
+	"time"
 
 	"github.com/lunny/xweb"
 )
@@ -24,30 +26,67 @@ func (c *BlogAction) Add() {
 	if c.Method() == "GET" {
 		c.Render("manager/add-blog.html")
 	} else if c.Method() == "POST" {
+		session := c.Orm.NewSession()
+		defer session.Close()
+		session.Begin()
 		if c.Status == "on" {
 			c.Blog.Status = 1
 		} else {
 			c.Blog.Status = 0
 		}
-		_, err := c.Orm.Insert(c.Blog)
+		c.Blog.CreateTime = time.Now()
+		c.Blog.UpdateTime = time.Now()
+		//保存博客
+		_, err := session.Insert(c.Blog)
 		if err != nil {
 			fmt.Println(err)
+			session.Rollback()
 			return
 		}
+		//保存博客分类关联
 		if c.Cat != nil {
-			list := make([]*BlogCategory, 10)
-			for _, value := range c.Cat {
+			list := make([]*BlogCategory, len(c.Cat))
+			for key, value := range c.Cat {
 				bc := new(BlogCategory)
 				bc.BlogId = c.Blog.Id
 				bc.CategoryId = value
-				list = append(list, bc)
+				list[key] = bc
 			}
-			c.Orm.Insert(list)
+			session.Insert(&list)
 		}
-		fmt.Print("status=", c.Status)
-		fmt.Println("cat = ", c.Cat)
-		fmt.Println("tags = ", c.Tags)
-		//c.Orm.Insert(Blog)
+		//保存博客标签关联
+		if c.Tags != "" {
+			tags := strings.Split(c.Tags, ",")
+			tagList := make([]*BlogTag, len(tags))
+			for key, value := range tags {
+				tag := new(Tag)
+				has, err := session.Where("name=? and status=?", value, 1).Get(tag)
+				if err != nil {
+					fmt.Println(err)
+					return
+				}
+				//如果该标签已经存在
+				bt := new(BlogTag)
+				bt.BlogId = c.Blog.Id
+				if has {
+					bt.TagId = tag.Id
+				} else {
+					newTag := new(Tag)
+					tag.Name = value
+					tag.Status = 1
+					_, err := session.Insert(newTag)
+					if err != nil {
+						fmt.Println(err)
+						session.Rollback()
+						return
+					}
+					bt.TagId = newTag.Id
+				}
+				tagList[key] = bt
+			}
+			session.Insert(&tagList)
+		}
+		fmt.Println("插入成功======================")
 	}
 }
 

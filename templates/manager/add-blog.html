@@ -6,6 +6,8 @@
 	<link rel="shortcut icon" href="{{StaticUrl "images/favicon.ico"}}">
 	<link rel="stylesheet" type="text/css" href="{{StaticUrl "css/sider.css"}}">
 	<link href="{{StaticUrl "bootswitch/bootstrap-switch.min.css"}}" rel="stylesheet">
+	<link href="http://cdn.bootcss.com/bootstrap-tokenfield/0.12.0/css/bootstrap-tokenfield.min.css" rel="stylesheet">
+	<link href="http://cdn.bootcss.com/bootstrap-tokenfield/0.12.0/css/tokenfield-typeahead.min.css" rel="stylesheet">
 	<style type="text/css">
 		.div-wrapper .blog-content {
 			text-indent: 0;
@@ -20,6 +22,14 @@
 		}
 		.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary, .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary{
 			background: #ff5f3e;
+		}
+		.tokenfield.focus{
+			border-color: #ff5f3e;
+			-webkit-box-shadow: inset 0 1px 1px rgba(255,0,0,.075), 0 0 5px rgba(255, 0, 0, 0.6);
+			-moz-box-shadow: inset 0 1px 1px rgba(255,0,0,.075), 0 0 5px rgba(255, 0, 0, 0.6);
+			-o-box-shadow: inset 0 1px 1px rgba(255,0,0,.075), 0 0 5px rgba(255, 0, 0, 0.6);
+			-ms-box-shadow: inset 0 1px 1px rgba(255,0,0,.075), 0 0 5px rgba(255, 0, 0, 0.6);
+			box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 5px rgba(255, 0, 0, 0.6);
 		}
 	</style>
 </head>
@@ -59,7 +69,7 @@
 							  	<div class="form-group">
 							  		<label class="col-sm-2 control-label">标签</label>
 							    	<div class="col-sm-10">
-							      		<input type="text" class="form-control" name="Tags" placeholder="请输入关键词,多个词用;分隔" />
+							      		<input type="text" class="form-control" id="tags" name="Tags" placeholder="请输入关键词" />
 							    	</div>
 							  	</div>
 							  	<div class="form-group">
@@ -90,8 +100,10 @@
     <script type="text/javascript" src="{{StaticUrl "ueeditor/ueditor.config.js"}}"></script>
     <!-- 编辑器源码文件 -->
     <script type="text/javascript" src="{{StaticUrl "ueeditor/ueditor.all.js"}}"></script>
+    <script src="http://cdn.bootcss.com/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
+			$('#tags').tokenfield();
 			$("[name='Status']").bootstrapSwitch();
 			var ue = UE.getEditor('blog-detail');
 			//对编辑器的操作最好在编辑器ready之后再做

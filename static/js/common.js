@@ -1,13 +1,13 @@
 $(function() {
-		$('.nav-container').slideDown(500);
-		$(".nav-list").on("mouseenter", "li.nav-item", function(evt) {
-			getFocus($(this));
-		});
+	$('.nav-container').slideDown(500);
+	$(".nav-list").on("mouseenter", "li.nav-item", function(evt) {
+		getFocus($(this));
+	});
 
-		$(".nav-list").on("mouseout", function(evt) {
-			var $dom = $(".nav-list").find(".cur");
-			getFocus($dom);
-		});
+	$(".nav-list").on("mouseout", function(evt) {
+		var $dom = $(".nav-list").find(".cur");
+		getFocus($dom);
+	});
 });
 
 function getFocus($dom,flag){
