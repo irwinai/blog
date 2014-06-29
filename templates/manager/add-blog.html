@@ -13,12 +13,6 @@
 			text-indent: 0;
 			padding-bottom: 80px;	
 			background: #fff;
-			background: rgba(255,255,255,0.9);
-			background: -webkit-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
-			background: -moz-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
-			background: -ms-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
-			background: -o-linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
-			background: linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 50px);
 		}
 		.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary, .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary{
 			background: #ff5f3e;
@@ -41,7 +35,6 @@
 			</div>
 			<div class="col-md-9">
 				<div class="div-wrapper">
-					<div class="blog-item">
 						<div class="blog-content">
 							<form class="form-horizontal" role="form" action="/blog/add" method="POST">
 							  	<div class="form-group">
@@ -76,9 +69,7 @@
 							  		<label class="col-sm-2 control-label">内容</label>
 							    	<div class="col-sm-10">
 							    		<!-- 加载编辑器的容器 -->
-									    <script id="blog-detail" name="blog.Content" type="text/plain">
-									        这里写你的初始化内容
-									    </script>
+									  <textarea id="content" name="blog.content" class="form-control" rows="20"></textarea>
 							    	</div>
 							  	</div>
 							  	<div class="form-group">
@@ -89,35 +80,63 @@
 							    </div>
 							</form>
 						</div>
-					</div>
-				</p>
 			</div>
 		</div>
 	</div>
 	{{include "footer.html"}}
-    <script type="text/javascript" src="{{StaticUrl "bootswitch/bootstrap-switch.min.js"}}"></script>
-    <!-- 配置文件 -->
-    <script type="text/javascript" src="{{StaticUrl "ueeditor/ueditor.config.js"}}"></script>
-    <!-- 编辑器源码文件 -->
-    <script type="text/javascript" src="{{StaticUrl "ueeditor/ueditor.all.js"}}"></script>
+	<script src="http://cdn.bootcss.com/jquery-migrate/1.2.1/jquery-migrate.min.js"></script>
+    <script type="text/javascript" src="{{StaticUrl "xheditor/xheditor.min.js"}}"></script>
+     <script type="text/javascript" src="{{StaticUrl "bootswitch/bootstrap-switch.min.js"}}"></script>
     <script src="http://cdn.bootcss.com/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
+			var plugin = {
+				test3:{c:'testClassName',t:'测试3：需要转移焦点的对话框 (Ctrl+3)',s:'ctrl+3',h:1,e:function(){
+			            var _this=this;
+			            var jTest=$('<div>' +
+			            			'<select id="xhSelect">' +
+			            			'<option value="html">HTML</option>' +
+			            			'<option value="css">Css</option>' +
+			            			'<option value="php">PHP</option>' +
+			            			'<option value="java">Java</option>' +
+			            			'<option value="javascript">Javascript</option>' +
+			            			'<option value="py">Python</option>' +
+			            			'<option value="go">Go</option>' +
+			            			'<option value="c#">C#</option>' +
+			            			'<option value="ruby">Ruby</option>' +
+			            			'<option value="c++">C++</option>' +
+			            			'<option value="c">C</option>' +
+			            			'<option value="perl">Perl</option>' +
+			            			'<option value="shell">Shell</option>' +
+			            			'<option value="">其它</option>' +
+			            			'<select>' +
+			            			'</div>' + 
+			            			'<div>' +	
+			            			'<textarea id="xheTestInput" style="width:260px;height:100px;"></textarea>' +
+			            			'</div>' +
+			            			'<div style="text-align:right;">' +
+			            			'<input type="button" id="xheSave" value="确定" /></div>'
+			            			);
+			            var jTestInput=$('#xheTestInput',jTest),
+			            	jSave=$('#xheSave',jTest),
+			            	jSel=$("#xhSelect",jTest);
+			            jSave.click(function(){
+			                _this.loadBookmark();
+			                _this.pasteHTML('<pre><code class="'+jSel.val()+'">' + jTestInput.val() + '</code></pre>');
+			                _this.hidePanel();
+			                return false;    
+			            });
+			            _this.saveBookmark();
+			            _this.showDialog(jTest);
+			        }}
+			}
+			$("#content").xheditor({
+				plugins:plugin,
+				tools:'full',
+				skin:'nostyle'
+			});
 			$('#tags').tokenfield();
 			$("[name='Status']").bootstrapSwitch();
-			var ue = UE.getEditor('blog-detail');
-			//对编辑器的操作最好在编辑器ready之后再做
-			ue.ready(function() {
-			    //设置编辑器的内容
-			    ue.setContent('请输入文章内容');
-			    ue.setHeight(500);
-			    //获取html内容，返回: <p>hello</p>
-			    var html = ue.getContent();
-			    //获取纯文本内容，返回: hello
-			    var txt = ue.getContentTxt();
-			    console.log(html)
-			    console.log(txt)
-			});
 			getFocus($(".nav-list .li-add-blog"),true);
 		});
 	</script>

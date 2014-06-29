@@ -32,12 +32,12 @@ func main() {
 	orm.ShowSQL, _ = cfg.GetBool("showSql")
 	orm.ShowDebug, _ = cfg.GetBool("showDebug")
 
-	err = orm.Sync(&User{}, &Blog{}, &BlogCategory{}, &BlogTag{}, &Category{}, &Comment{}, &Tag{})
+	// err = orm.Sync(&User{}, &Blog{}, &BlogCategory{}, &BlogTag{}, &Category{}, &Comment{}, &Tag{})
 
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
+	// if err != nil {
+	// 	fmt.Println(err)
+	// 	return
+	// }
 
 	server := xweb.MainServer()
 	app := xweb.RootApp()
@@ -57,6 +57,6 @@ func main() {
 
 	// add actions
 	xweb.AddAction(&HomeAction{})
-	xweb.AutoAction(&BlogAction{}, &ManagerAction{})
+	xweb.AutoAction(&BlogAction{}, &ManagerAction{}, &UploadAction{})
 	xweb.Run(fmt.Sprintf("%v:%v", cfgs["address"], cfgs["port"]))
 }
