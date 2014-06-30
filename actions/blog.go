@@ -28,6 +28,7 @@ func (c *BlogAction) Add() {
 	} else if c.Method() == "POST" {
 		session := c.Orm.NewSession()
 		defer session.Close()
+		defer session.Commit()
 		session.Begin()
 		if c.Status == "on" {
 			c.Blog.Status = 1
@@ -37,7 +38,7 @@ func (c *BlogAction) Add() {
 		c.Blog.CreateTime = time.Now()
 		c.Blog.UpdateTime = time.Now()
 		//保存博客
-		_, err := session.Insert(c.Blog)
+		_, err := session.Insert(&c.Blog)
 		if err != nil {
 			fmt.Println(err)
 			session.Rollback()
@@ -72,8 +73,8 @@ func (c *BlogAction) Add() {
 					bt.TagId = tag.Id
 				} else {
 					newTag := new(Tag)
-					tag.Name = value
-					tag.Status = 1
+					newTag.Name = value
+					newTag.Status = 1
 					_, err := session.Insert(newTag)
 					if err != nil {
 						fmt.Println(err)

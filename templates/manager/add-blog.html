@@ -25,6 +25,10 @@
 			-ms-box-shadow: inset 0 1px 1px rgba(255,0,0,.075), 0 0 5px rgba(255, 0, 0, 0.6);
 			box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 5px rgba(255, 0, 0, 0.6);
 		}
+		.coder{
+			background: transparent url(../../xheditor/xheditor_skin/nostyle/img/code.gif) no-repeat 16px 16px;
+			background-position: 2px 2px;
+		}
 	</style>
 </head>
 <body>
@@ -91,9 +95,9 @@
 	<script type="text/javascript">
 		$(function(){
 			var plugin = {
-				test3:{c:'testClassName',t:'测试3：需要转移焦点的对话框 (Ctrl+3)',s:'ctrl+3',h:1,e:function(){
+				coder:{c:'coder',t:'添加代码',s:'ctrl+3',h:1,e:function(){
 			            var _this=this;
-			            var jTest=$('<div>' +
+			            var code=$('<div>' +
 			            			'<select id="xhSelect">' +
 			            			'<option value="html">HTML</option>' +
 			            			'<option value="css">Css</option>' +
@@ -112,26 +116,27 @@
 			            			'<select>' +
 			            			'</div>' + 
 			            			'<div>' +	
-			            			'<textarea id="xheTestInput" style="width:260px;height:100px;"></textarea>' +
+			            			'<textarea id="codeInput" style="width:260px;height:100px;"></textarea>' +
 			            			'</div>' +
 			            			'<div style="text-align:right;">' +
-			            			'<input type="button" id="xheSave" value="确定" /></div>'
+			            			'<input type="button" id="xhSave" value="确定" /></div>'
 			            			);
-			            var jTestInput=$('#xheTestInput',jTest),
-			            	jSave=$('#xheSave',jTest),
-			            	jSel=$("#xhSelect",jTest);
-			            jSave.click(function(){
+			            var input=$('#codeInput',code),
+			            	save=$('#xhSave',code),
+			            	sel=$("#xhSelect",code);
+			            save.click(function(){
 			                _this.loadBookmark();
-			                _this.pasteHTML('<pre><code class="'+jSel.val()+'">' + jTestInput.val() + '</code></pre>');
+			                _this.pasteHTML('<pre><code class="'+sel.val()+'">' + input.val() + '</code></pre>');
 			                _this.hidePanel();
 			                return false;    
 			            });
 			            _this.saveBookmark();
-			            _this.showDialog(jTest);
+			            _this.showDialog(code);
 			        }}
 			}
 			$("#content").xheditor({
 				plugins:plugin,
+				loadCSS:'<style>pre{margin-left:2em;border-left:3px solid #CCC;padding:0 1em;}</style>',
 				tools:'full',
 				skin:'nostyle'
 			});
