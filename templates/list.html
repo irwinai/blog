@@ -4,6 +4,7 @@
 	<title></title>
 	<meta charset="UTF-8" />
 	<link rel="shortcut icon" href="{{StaticUrl "images/favicon.ico"}}">
+	<link href="http://cdn.bootcss.com/highlight.js/8.0/styles/tomorrow-night.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="{{StaticUrl "css/sider.css"}}">
 	<style type="text/css">
 		.div-wrapper .blog-head{
@@ -48,46 +49,26 @@
 			</div>
 			<div class="col-md-9">
 				<div class="div-wrapper">
+					{{range .T.blogs}}
 					<div class="blog-item">
 						<div class="blog-head clearfix">
 							<a href="" alt="irving" class="img-effect">
 								<img src="../images/me.png">
 								<i class="img-blur"></i>
 							</a>
-							<h2 title="我是标题，我显眼"><a href="/blog/detail">我是标题，我显眼</a></h2>
-							<div class="blog-time">2014-06-21</div>
+							<h2 title="{{.Title}}"><a href="/blog/detail?id={{.Id}}">{{.Title}}</a></h2>
+							<div class="blog-time">{{FormatDate .CreateTime "2006-01-02 15:04:05"}}</div>
 							<div class="blog-actions">
-								<label><i class="iconfont">&#xe601;</i>  0</label>
-								<label><i class="iconfont">&#xe604;</i>  2/1023</label>
+								<label><i class="iconfont">&#xe601;</i>  {{.CommentCount}}</label>
+								<label><i class="iconfont">&#xe604;</i>  {{.Like}}/{{.Views}}</label>
 							</div>
 						</div>
 						<div class="blog-content">
-							移动互联网时代也全面到来，如何利用广告这一传统的主流盈利模式，让移动apps的巨大流量得以变现，产生更多的商业价值，越来越值得研究。我们《移动广告研究》课题组已对各类的移动应用做了拉网式研究。作为课题成员之一，对现在移动apps的主流广告模式做了梳理。
-							广告是个两极化的商品产品。广告主和媒体爱它，因为能赚钱，而且做得好能赚大钱；普通用户很烦它，希望它永远滚出自己的视线。所以做出不烦人的广告，甚至让人喜欢的广告很有挑战。对比移动广告与PC广告，有两点不同:
-							<p class="view-detail text-right"><a>阅读全文 >></a></p>
+							<div class="blog-content-b">{{Html .Content}}</div>
+							<p class="view-detail text-right"><a href="/blog/detail?id={{.Id}}">阅读全文 >></a></p>
 						</div>
 					</div>
-					<div class="blog-item">
-						<div class="blog-head">
-							<div class="clearfix">
-								<a href="" alt="irving" class="img-effect">
-									<img src="../images/me.png">
-									<i class="img-blur"></i>
-								</a>
-								<h2 title="我是标题，我显眼"><a href="#">我是标题，我显眼</a></h2>
-								<div class="blog-time">2014-06-21</div>
-								<div class="blog-actions">
-									<label><i class="iconfont">&#xe601;</i>  0</label>
-									<label><i class="iconfont">&#xe604;</i>  2/1023</label>
-								</div>
-							</div>
-						</div>
-						<div class="blog-content">
-							移动互联网时代也全面到来，如何利用广告这一传统的主流盈利模式，让移动apps的巨大流量得以变现，产生更多的商业价值，越来越值得研究。我们《移动广告研究》课题组已对各类的移动应用做了拉网式研究。作为课题成员之一，对现在移动apps的主流广告模式做了梳理。
-							广告是个两极化的商品产品。广告主和媒体爱它，因为能赚钱，而且做得好能赚大钱；普通用户很烦它，希望它永远滚出自己的视线。所以做出不烦人的广告，甚至让人喜欢的广告很有挑战。对比移动广告与PC广告，有两点不同:
-							<p class="view-detail text-right"><a>阅读全文 >></a></p>
-						</div>
-					</div>
+					{{end}}
 					<div id="pagination" class="text-right">
 						<ul class="pagination pagination-sm">
  	 						<li><a href="#">&laquo;上一页</a></li>
@@ -104,10 +85,24 @@
 		</div>
 	</div>
 	{{include "footer.html"}}
+	<script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
+			contentControl();
+			$('pre code').each(function(i, e) {hljs.highlightBlock(e)});
 			getFocus($(".nav-list .li-art"),true);
 		});
+
+		function contentControl(){
+			$(".blog-content").each(function(){
+				var $this = $(this);
+				var $p = $(".blog-content-b", $this).eq(0);
+				console.log($p.outerHeight())
+			    while ($p.outerHeight() > 300) {
+			        $p.text($p.text().replace(/(\s)*([a-zA-Z0-9]+|\W)(\.\.\.)?$/, "..."));
+			    };
+			});
+		}
 	</script>
 </body>
 </html>

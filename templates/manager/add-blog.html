@@ -126,7 +126,7 @@
 			            	sel=$("#xhSelect",code);
 			            save.click(function(){
 			                _this.loadBookmark();
-			                _this.pasteHTML('<pre><code class="'+sel.val()+'">' + input.val() + '</code></pre>');
+			                _this.pasteHTML('<pre><code class="'+sel.val()+'">' + _this.domEncode(input.val()) + '</code></pre>');
 			                _this.hidePanel();
 			                return false;    
 			            });

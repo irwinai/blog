@@ -20,7 +20,7 @@ func (m *ManagerAction) Home() {
 }
 
 func (m *ManagerAction) Blogs() {
-	blogs := make([]Blog, 0)
+	blogs := make([]*Blog, 0)
 	err := m.Orm.Where("status=?", 1).Find(&blogs)
 	if err != nil {
 		fmt.Println(err)

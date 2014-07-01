@@ -119,15 +119,15 @@
 							 	</a>
 							 	<div class="media-body">
 							   		<div class="media-heading">
-							   			<h2 title="我是标题，我显眼">我是标题，我显眼,要做一个纯粹的人，做一个脱离了低级趣味的人，我打这么么多字，只是为了测试一下这个div的长度超长的情况而已</h2>
+							   			<h2 title="{{.T.blog.Title}}">{{.T.blog.Title}}</h2>
 							    	</div>
 							    	<div class="blog-info">
-							    		<span>作者: <a class="author-link" href="#">小艾同学</a></span>
+							    		<span>作者: <a class="author-link" href="#">{{.T.user.Username}}</a></span>
 							    		&nbsp;|&nbsp;
-							    		<span>发表于: 2014-09-11 下午3:20</span>
+							    		<span>发表于: {{FormatDate .T.blog.CreateTime "2006-01-02 15:04:05"}}</span>
 							    		<span class="blog-actions">
-							    			<label><i class="iconfont">&#xe601;</i>  0</label>
-											<label><i class="iconfont">&#xe604;</i>  2/1023</label>
+							    			<label><i class="iconfont">&#xe601;</i>  {{.T.blog.CommentCount}}</label>
+											<label><i class="iconfont">&#xe604;</i>  {{.T.blog.Like}}/{{.T.blog.Views}}</label>
 							    		</span>
 							    	</div>
 							  	</div>
@@ -135,48 +135,16 @@
 						</div>
 						<div class="blog-bg">
 							<div class="blog-content">
-								交互设计师如何培养数据分析的能力呢？
-								首先，要有数据收集分析的意识，掌握数据产生的来源；
-								从平时的工作中，总结出以下几点数据分析时要注意的原则，在这里抛砖引玉，欢迎来拍：
-								 <pre><code>
-    function getConfigFilePath() {
-
-        var configPath = document.getElementsByTagName('script');
-
-        return configPath[ configPath.length - 1 ].src;
-
-    }
-
-    function getBasePath(docUrl, confUrl) {
-
-        var basePath = confUrl;
-
-
-        if (/^(\/|\\\\)/.test(confUrl)) {
-
-            basePath = /^.+?\w(\/|\\\\)/.exec(docUrl)[0] + confUrl.replace(/^(\/|\\\\)/, '');
-
-        } else if (!/^[a-z]+:/i.test(confUrl)) {
-
-            docUrl = docUrl.split("#")[0].split("?")[0].replace(/[^\\\/]+$/, '');
-
-            basePath = docUrl + "" + confUrl;
-
-        }
-
-        return optimizationPath(basePath);
-
-    }
-	 </code></pre>
-								1、明确数据分析的目的
-								你分析的结果可能会改变整个项目，但有了数据的支撑，会让项目或需求有一个全新的开始或细节的调整。
-								2、了解数据来源并收集
-								按照分析的目标中罗列的点，建立一个分析框架，并按照轻重缓急进行数据收集。与此同时，需要对数据是如何产生的，如何获取这些数据进行相应的了解。在工作中应用到的数据统计工具有：金牌令箭、显微镜、CNZZ统计等，通过这些统计工具可以方便的进行数据的收集，同时交互设计师也要与前端保持沟通，了解数据统计的方法，适时添加统计的维度，请前端同学帮忙埋统计代码。
-								<div class="tags">
+								{{Html .T.blog.Content}}
+								{{$x:=len .T.tags}}
+								{{if gt $x 0}}
+									<div class="tags">
 									关键词:  
-									<a href="#">大数据</a>
-									<a href="#">前端设计</a>
+									{{range .T.tags}}
+										<a href="">{{.Name}}</a>
+									{{end}}
 								</div>
+								{{end}}
 							</div>
 							<div class="blog-comment">
 								<div class="comment-des">
@@ -251,17 +219,17 @@
 	</div>
 	<div class="page">
 		<div class="back pos">
-			<a href="#" alt="上一篇"><i class="iconpage">&#xe602;</i></a>
+			<a href="/blog/paging?type=pre&id={{.T.blog.Id}}" alt="上一篇"><i class="iconpage">&#xe602;</i></a>
 		</div>
 		<div class="go pos">
-			<a href="#" alt="下一篇"><i class="iconpage">&#xe603;</i></a>
+			<a href="/blog/paging?type=next&id={{.T.blog.Id}}" alt="下一篇"><i class="iconpage">&#xe603;</i></a>
 		</div>
 	</div>
 	{{include "footer.html"}}
 	<script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>  
 	<script type="text/javascript">
 		$(function(){
-			 $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+			$('pre code').each(function(i, e) {hljs.highlightBlock(e)});
 			getFocus($(".nav-list .li-art"),true);
 		});
 	</script>
