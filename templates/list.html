@@ -60,7 +60,7 @@
 							<div class="blog-time">{{FormatDate .CreateTime "2006-01-02 15:04:05"}}</div>
 							<div class="blog-actions">
 								<label><i class="iconfont">&#xe601;</i>  {{.CommentCount}}</label>
-								<label><i class="iconfont">&#xe604;</i>  {{.Like}}/{{.Views}}</label>
+								<label id="like-action"><i class="iconfont">&#xe604;</i>  {{.Like}}/{{.Views}}</label>
 							</div>
 						</div>
 						<div class="blog-content">
@@ -97,7 +97,6 @@
 			$(".blog-content").each(function(){
 				var $this = $(this);
 				var $p = $(".blog-content-b", $this).eq(0);
-				console.log($p.outerHeight())
 			    while ($p.outerHeight() > 300) {
 			        $p.text($p.text().replace(/(\s)*([a-zA-Z0-9]+|\W)(\.\.\.)?$/, "..."));
 			    };
