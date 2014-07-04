@@ -160,7 +160,6 @@ func (c *ManagerAction) Add() error {
 			}
 			session.Insert(&tagList)
 		}
-		fmt.Println("插入成功======================")
 		c.Go("blogs")
 	}
 	return xweb.NotSupported()

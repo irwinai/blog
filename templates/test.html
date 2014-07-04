@@ -1,45 +1,25 @@
 <html>
 <head>
-    <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="../js/blur.js"></script>
+    <script type="text/javascript" src="../static/js/jquery-1.9.1.min.js"></script>
+    <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.twbsPagination.min.js"></script>
     <script type="text/javascript">
-        var img = new Image();
-        img.onload = function(){
-            var canvas = $('#blur').get(0);
-            var ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0);
-            varBlur(ctx, function(x, y){
-                var z = Math.sqrt(canvas.height) ;
-                return z || 1;
+        $(function(){
+            $('#pagination-demo').twbsPagination({
+                totalPages: 35,
+                visiblePages: 7,
+                onPageClick: function (event, page) {
+                    $('#page-content').text('Page ' + page);
+                }
             });
-        }
-        img.src = "../images/a.jpg";
+        })
     </script>
-    <style type="text/css">
-#blur{
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -2;
-    min-width: 100%;
-    min-height: 100%;
-}
-    </style>
     <title></title>
 </head>
 <body>
-    <canvas id="blur" width="500" height="333"></canvas>
-<table style="width:200px" border="1" cellspacing="1" cellpadding="1" style="table-layout:fixed">
-  <tr>
-    <td style="width:100px">1</td>
-    <td style="width:100px" colspan="2">2</td>
-  </tr>
-  <tr>
-    <td style="width:100px">1.1</td>
-    <td style="width:80px">2.1</td>
-    <td style="width:20px">2.2</td>
-  </tr>
-</table>
-
+  
+    <div id="page-content" class="well">Page 1</div>
+     <ul id="pagination-demo"class="pagination-sm"></ul>
 </body>
 </html>

@@ -37,7 +37,6 @@ func (c *BlogAction) Paging() {
 	if err != nil {
 		return
 	}
-	fmt.Println(result)
 	if result != nil && len(result) > 0 && len(result[0]) > 0 {
 		mid := (string)(result[0]["mid"][0])
 		c.Go(fmt.Sprintf("detail?id=%v", mid))
@@ -48,7 +47,7 @@ func (c *BlogAction) Paging() {
 
 func (c *BlogAction) List() {
 	blogs := make([]Blog, 0)
-	err := c.Orm.Where("status=?", 1).Find(&blogs)
+	err := c.Orm.Where("status=?", 1).Desc("create_time").Find(&blogs)
 	if err != nil {
 		fmt.Println(err)
 		return

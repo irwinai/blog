@@ -42,6 +42,7 @@ func main() {
 	server := xweb.MainServer()
 	app := xweb.RootApp()
 	app.SetConfig("Orm", orm)
+	app.SetConfig("cfg", cfg)
 	app.AppConfig.CheckXrsf = false //不验证xrsf
 
 	if useCache, _ := cfg.GetBool("useCache"); useCache {

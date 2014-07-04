@@ -89,7 +89,7 @@
 	</div>
 	{{include "footer.html"}}
 	<script src="http://cdn.bootcss.com/jquery-migrate/1.2.1/jquery-migrate.min.js"></script>
-    <script type="text/javascript" src="{{StaticUrl "xheditor/xheditor.min.js"}}"></script>
+    <script type="text/javascript" src="{{StaticUrl "xheditor/xheditor.js"}}"></script>
      <script type="text/javascript" src="{{StaticUrl "bootswitch/bootstrap-switch.min.js"}}"></script>
     <script src="http://cdn.bootcss.com/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.min.js"></script>
 	<script type="text/javascript">
@@ -138,7 +138,13 @@
 				plugins:plugin,
 				loadCSS:'<style>pre{margin-left:2em;border-left:3px solid #CCC;padding:0 1em;}</style>',
 				tools:'full',
-				skin:'nostyle'
+				skin:'nostyle',
+				upImgUrl:"/upload", //图片上传地址
+				upImgExt:"jpg,jpeg,gif,png,bmp",
+				upFlashUrl:"/upload",
+				upFlashExt:"swf",
+				upMediaUrl:"/upload",
+				upMediaExt:"avi,wmv,asf,asx,rmvb,rm,mpg,mpeg,mpe,dat,vob,dv,3gp,3g2,mov,mkv,mp4,m4v,flv"
 			});
 			$('#tags').tokenfield();
 			$("[name='Status']").bootstrapSwitch();
