@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strings"
 	"time"
 )
@@ -18,4 +19,7 @@ func main() {
 	m := int(now.Month())
 	d := now.Day()
 	fmt.Println(y, m, d)
+
+	path := "/Users/irving/itest"
+	fmt.Println(os.MkdirAll(path, 0777))
 }

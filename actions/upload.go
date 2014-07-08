@@ -44,6 +44,7 @@ func (c *UploadAction) Home() {
 	size, _ := strconv.Atoi(c.cfg.Map()["file_size"])
 	b, err := ioutil.ReadAll(c.Request.Body)
 	if err != nil {
+		fmt.Println("size err=======>", err)
 		sendErr("获取图片大小失败", c, m)
 	}
 	if len(b) > size {
@@ -57,15 +58,16 @@ func (c *UploadAction) Home() {
 	now := time.Now()
 	timeFolder := fmt.Sprintf("%v/%v/%v", now.Year(), int(now.Month()), now.Day()) //按照日创建目录
 	path = fmt.Sprintf("%v/%v/%v", path, username, timeFolder)
-	os.MkdirAll(path, 0666)
+	os.MkdirAll(path, 0777)
 	savePath := fmt.Sprintf("%v/%v.%v", path, random, fileExt)
 	fmt.Println("========save path==========", path)
-	f, _ := os.OpenFile(savePath, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0666)
+	f, _ := os.OpenFile(savePath, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0777)
 	defer f.Close()
 
 	_, err = f.Write(b)
 	if err != nil {
-		sendErr("上传文件失败，系统异常", c, m)
+		fmt.Println("write to disk err========>", err.Error())
+		sendErr("写入硬盘失败，系统异常", c, m)
 	}
 
 	//保存文件到数据库
@@ -79,6 +81,7 @@ func (c *UploadAction) Home() {
 	pic.UserId = 1 //这里先写死
 	_, err = c.Orm.Insert(pic)
 	if err != nil {
+		fmt.Println("insert pic to db err=====>", err)
 		sendErr("上传文件失败，系统异常", c, m)
 	}
 	m["err"] = ""
