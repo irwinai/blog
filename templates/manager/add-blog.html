@@ -40,7 +40,7 @@
 			<div class="col-md-9">
 				<div class="div-wrapper">
 						<div class="blog-content">
-							<form class="form-horizontal" role="form" action="/manager/blog/add" method="POST">
+							<form class="form-horizontal blog-form" role="form" action="/manager/blog/add" method="POST">
 							  	<div class="form-group">
 								    <label class="col-sm-2 control-label">标题</label>
 								    <div class="col-sm-10">
@@ -144,12 +144,19 @@
 				upFlashUrl:"/upload",
 				upFlashExt:"swf",
 				upMediaUrl:"/upload",
-				upMediaExt:"avi,wmv,asf,asx,rmvb,rm,mpg,mpeg,mpe,dat,vob,dv,3gp,3g2,mov,mkv,mp4,m4v,flv"
+				upMediaExt:"avi,wmv,asf,asx,rmvb,rm,mpg,mpeg,mpe,dat,vob,dv,3gp,3g2,mov,mkv,mp4,m4v,flv",
+				onUpload:insertUpload //上传成功回调方法
 			});
 			$('#tags').tokenfield();
 			$("[name='Status']").bootstrapSwitch();
 			getFocus($(".nav-list .li-add-blog"),true);
 		});
+	
+		function insertUpload(msg){
+			msg = msg.toString();
+			var name = msg.substring(msg.lastIndexOf("/") + 1,msg.length)
+			$(".blog-form").append('<input type="hidden" name="picName" value="'+name+'" />');
+		}
 	</script>
 </body>
 </html>

@@ -73,3 +73,15 @@ type Tag struct {
 	Name   string `xorm:"not null VARCHAR(10)"`
 	Status int    `xorm:"not null TINYINT(4)"`
 }
+
+type Picture struct {
+	Id      int    `xorm:"not null pk autoincr INT(11)"`
+	Name    string `xorm:"not null VARCHAR(64)"`
+	OldName string `xorm:"not null VARCHAR(64)"`
+	Size    string `xorm:"not null VARCHAR(10)"`
+	Path    string `xorm:"not null VARCHAR(200)"`
+	UserId  int    `xorm:"INT(11)"`
+	BlogId  int    `xorm:"INT(11)"`
+	Desc    string `xorm:"VARCHAR(100)"`
+	Status  int    `xorm:"not null TINYINT(4)"` //0不可用1可用2已删除
+}

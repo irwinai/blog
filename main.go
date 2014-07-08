@@ -32,7 +32,7 @@ func main() {
 	orm.ShowSQL, _ = cfg.GetBool("showSql")
 	orm.ShowDebug, _ = cfg.GetBool("showDebug")
 
-	// err = orm.Sync(&User{}, &Blog{}, &BlogCategory{}, &BlogTag{}, &Category{}, &Comment{}, &Tag{})
+	err = orm.Sync(&User{}, &Blog{}, &BlogCategory{}, &BlogTag{}, &Category{}, &Comment{}, &Tag{}, &Picture{})
 
 	// if err != nil {
 	// 	fmt.Println(err)

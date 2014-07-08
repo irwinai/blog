@@ -15,11 +15,12 @@ type ManagerAction struct {
 	blogs xweb.Mapper `xweb:"/blog/list"`
 	add   xweb.Mapper `xweb:"/blog/add"`
 
-	User   User
-	Blog   Blog
-	Status string
-	Cat    []int
-	Tags   string
+	User    User
+	Blog    Blog
+	Status  string
+	Cat     []int
+	Tags    string
+	PicName string
 }
 
 func (m *ManagerAction) Home() {
@@ -160,6 +161,16 @@ func (c *ManagerAction) Add() error {
 			}
 			session.Insert(&tagList)
 		}
+
+		//保存图片关联
+		pic := new(Picture)
+		_, err = c.Orm.Where("name=?", c.PicName).Get(pic)
+		if err != nil {
+			fmt.Println(err)
+			return err
+		}
+		pic.BlogId = c.Blog.Id
+		c.Orm.Update(pic)
 		c.Go("blogs")
 	}
 	return xweb.NotSupported()
