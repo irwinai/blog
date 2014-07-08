@@ -98,7 +98,7 @@ func (m *ManagerAction) Blogs() {
 
 func (c *ManagerAction) Add() error {
 	if c.Method() == "GET" {
-		c.Render("manager/add-blog.html")
+		return c.Render("manager/add-blog.html")
 	} else if c.Method() == "POST" {
 		session := c.Orm.NewSession()
 		defer session.Close()
